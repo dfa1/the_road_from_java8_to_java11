@@ -1,0 +1,36 @@
+= What's new with Java
+v0.1, 2018-09-19
+:author: Davide Angelocola
+:firstname: Davide
+:lastname: Angelocola
+:email: davide.angelocola@gmail.com
+:copyright: CC-BY-SA 3.0
+:doctype: book
+:creator: {author}
+:source-highlighter: prettify
+
+== About the Author
+
+You can contact {author} at {email}. {firstname} loves to hear from other developers.
+
+== Introduction
+
+Modernize your Java code base step by step.
+
+== Principles
+
+* small steps
+* examples are compiled with JShell
+
+== Upgrade to Java11
+
+
+=== Character.toString(int)
+
+This method returns the string representation for the given Unicode code point as shown below:
+
+[source,java]
+----
+include::snippets/character_toString.jsh[]
+----
+
