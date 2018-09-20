@@ -48,9 +48,41 @@ include::snippets/java10_var.jsh[]
 ----
 
 
+Now it is possible to express things not possible before, use wisely:
+
+[source,java]
+----
+var a = new Object() {
+
+   void m() {
+
+   }
+
+};
+
+a.m();
+
+----
+
 == Upgrade to Java9
 
 === JShell
+
+
+=== Immutable collections
+
+Gotcha: cannot use Set.of to filter aways duplicated.
+
+[source,java]
+----
+jshell> Set.of(1,1).getClass()
+|  java.lang.IllegalArgumentException thrown: duplicate element: 1
+|        at ImmutableCollections$SetN.<init> (ImmutableCollections.java:463)
+|        at Set.of (Set.java:521)
+----
+
+[AAA]
+Immutability vs views: copyOf() is a new tool yielding an immutable copy of the datastracture. Collections.unmodificable* are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
 
 
 === Version
