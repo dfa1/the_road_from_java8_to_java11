@@ -15,8 +15,9 @@ You can contact {author} at {email}. {firstname} loves to hear from other develo
 
 == Introduction
 
-The idea behind this this article is to document new Java classes/idioms in order to modernize
-your code base, step by step.
+As Java developer we spend we will busy upgrading our code bases to newest Java version.
+The idea behind this article is to document in a systematic way the new Java API and features.
+The section are organized in baby steps.
 
 == Principles
 
