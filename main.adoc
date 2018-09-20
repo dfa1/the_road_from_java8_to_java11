@@ -24,7 +24,6 @@ Modernize your Java code base step by step.
 
 == Upgrade to Java11
 
-
 === Character.toString(int)
 
 This method returns the string representation for the given Unicode code point as shown below:
@@ -33,4 +32,16 @@ This method returns the string representation for the given Unicode code point a
 ----
 include::snippets/character_toString.jsh[]
 ----
+
+== Upgrade to Java10
+
+=== local type inference
+
+This is the big new feature of Java 10, introduced by  http://openjdk.java.net/jeps/286
+
+[source,java]
+----
+include::snippets/java10_var.jsh[]
+----
+
 
