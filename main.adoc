@@ -15,11 +15,13 @@ You can contact {author} at {email}. {firstname} loves to hear from other develo
 
 == Introduction
 
-Modernize your Java code base step by step.
+The idea behind this this article is to document new Java classes/idioms in order to modernize
+your code base, step by step.
 
 == Principles
 
-* small steps
+* use standard library
+* step by step migrations
 * examples are compiled with JShell
 
 == Upgrade to Java11
@@ -45,3 +47,45 @@ include::snippets/java10_var.jsh[]
 ----
 
 
+== Upgrade to Java9
+
+=== JShell
+
+
+=== Version
+
+In legacy codebases it is possible to find some creative code around determining which java version
+we are using:
+
+[source,java]
+----
+String version = Runtime.class.getPackage().getImplementationVersion();
+----
+
+[source,java]
+----
+double version = Double.parseDouble(System.getProperty("java.specification.version"));
+----
+
+[source,java]
+----
+String[] javaVersionElements = System.getProperty("java.runtime.version").split("\\.|_|-b");
+----
+
+
+[source,java]
+----
+Runtime.Version version = Runtime.version();
+----
+
+[source,java]
+----
+include::snippets/java9_version.jsh[]
+----
+
+
+== Upgrade to Java8
+
+=== java.io.UncheckedIOException
+
+This is a little know class
