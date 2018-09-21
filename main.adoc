@@ -81,9 +81,17 @@ jshell> Set.of(1,1).getClass()
 |        at Set.of (Set.java:521)
 ----
 
-[AAA]
-Immutability vs views: copyOf() is a new tool yielding an immutable copy of the datastracture. Collections.unmodificable* are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
+.Immutability vs views
+NOTE: copyOf() is a new tool yielding an immutable copy of the datastracture. Collections.unmodificable* are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
 
+=== java.util.Optional.stream()
+
+[source,java]
+----
+List<String> filteredList = listOfOptionals.stream()
+  .flatMap(Optional::stream)
+  .collect(Collectors.toList());
+----
 
 === Version
 
@@ -116,6 +124,20 @@ Runtime.Version version = Runtime.version();
 include::snippets/java9_version.jsh[]
 ----
 
+=== java.lang.ProcessHandle
+
+Obtain information about JVM itself:
+
+[source,java]
+----
+include::snippets/java9_process_info.jsh[]
+----
+
+List all system processes:
+[source,java]
+----
+include::snippets/java9_process_list.jsh[]
+----
 
 == Upgrade to Java8
 
