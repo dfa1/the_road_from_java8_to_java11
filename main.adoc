@@ -17,6 +17,7 @@ You can contact {author} at {email}. {firstname} loves to hear from other develo
 
 As Java developer we will busy upgrading our code bases to newest Java LTS release: Java 11.
 I think it is important to document, with examples, how to take advantage of new Java classes and idioms.
+The focus however is on the language level changes, not runtime.
 
 == Principles
 
@@ -26,6 +27,8 @@ I think it is important to document, with examples, how to take advantage of new
 
 == Upgrade to Java11
 
+Java11 is the new LTS version of java. Once you support this release you can take advantages of all new APIs introduced since Java9.
+
 === Character.toString(int)
 
 This method returns the string representation for the given Unicode code point as shown below:
@@ -34,6 +37,92 @@ This method returns the string representation for the given Unicode code point a
 ----
 include::snippets/character_toString.jsh[]
 ----
+
+=== String.lines()
+
+Sometimes this is very convenient: get a stream divided by line breaks:
+
+[source,java]
+----
+jshell> "a\nb\nc\n".lines().toUpperCase).toArray()
+$1 ==> Object[2] { "A", "B", "C }
+----
+
+=== String.lines()
+
+Repeat String for the specified number of times:
+
+[source,java]
+----
+jshell> "test".repeat(3)
+$7 ==> "testtesttest"
+----
+
+[NOTE] check bondaries (-1, MAX_VALUE)
+
+
+=== String.isBlank()
+
+This is correct but too technical, and perhaps the intent is not clear:
+
+    boolean blank = string.codePoints().allMatch(Character::isWhitespace);
+
+
+https://bugs.openjdk.java.net/browse/JDK-8200437
+
+[source,java]
+----
+jshell> var halfSpace = "\u0020"
+halfSpace ==> " "
+
+jshell> halfSpace.trim()
+$2 ==> ""
+
+jshell> var fullSpace = "\u3000"
+fullSpace ==> "　"
+
+jshell> fullSpace.trim()
+$4 ==> "　"
+----
+
+
+
+=== String.strip()
+While almost the same as  trim()/trimLeft()/trimRight(), this takes full-width spaces as a space.
+
+[source,java]
+----
+jshell> var halfSpace = "\u0020"
+halfSpace ==> " "
+
+jshell> halfSpace.trim()
+$2 ==> ""
+
+jshell> var fullSpace = "\u3000"
+jshell> fullSpace.trim()
+$4 ==> ""
+----
+
+.TODO
+cover also stripLeading()/stripTrailing()
+
+=== Null objects
+
+https://download.java.net/java/early_access/jdk11/docs/api/java.base/java/io/Reader.html#nullReader()
+Reader
+nullReader()
+We can get a  Reader  that does nothing.
+
+Writer
+nullWriter()
+We can get a  Writer that does nothing.
+
+InputStream
+nullInputStream()
+We can get an  InputStream  that does nothing.
+
+OutputStream
+nullOutputStream()
 
 == Upgrade to Java10
 
