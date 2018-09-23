@@ -27,10 +27,18 @@ The focus however is on the language level changes, not runtime.
 
 == Upgrade to Java11
 
-Java11 is the new LTS version. The big feature are:
+Java11 is the new LTS version.
 
+The big feature are[http://jdk.java.net/11/release-notes]:
 - removal of Corba and Java EE.
 - unicode 9 and 10 support
+
+=== Upgrade problems
+
+- http://openjdk.java.net/jeps/320 provide missing JARs like JavaEE, JavaFX, etc
+- https://bugs.openjdk.java.net/browse/JDK-8060192
+- Removal of Thread.destroy() and Thread.stop(Throwable) Methods (JDK-8204243)
+- Removal of com.sun.awt.AWTUtilities Class (JDK-8200149)
 
 === Optional.isEmpty()
 
