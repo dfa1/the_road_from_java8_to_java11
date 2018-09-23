@@ -15,15 +15,14 @@ You can contact {author} at {email}. {firstname} loves to hear from other develo
 
 == Introduction
 
-As Java developer we spend we will busy upgrading our code bases to newest Java version.
-The idea behind this article is to document in a systematic way the new Java API and features.
-The section are organized in baby steps.
+As Java developer we will busy upgrading our code bases to newest Java LTS release: Java 11.
+I think it is important to document, with examples, how to take advantage of new Java classes and idioms.
 
 == Principles
 
-* use standard library
-* step by step migrations
+* use standard library as much as possible
 * examples are compiled with JShell
+* step by step migrations
 
 == Upgrade to Java11
 
@@ -40,7 +39,7 @@ include::snippets/character_toString.jsh[]
 
 === local type inference
 
-This is the big new feature of Java 10, introduced by  http://openjdk.java.net/jeps/286
+This is the big new feature of Java 10, introduced by http://openjdk.java.net/jeps/286
 
 [source,java]
 ----
@@ -71,23 +70,36 @@ a.m();
 
 === Immutable collections
 
-Gotcha: cannot use Set.of to filter aways duplicated.
+JEP 269 http://openjdk.java.net/jeps/269 introduced some new factory methods for collections.
+New APIs are:
 
 [source,java]
 ----
-jshell> Set.of(1,1).getClass()
-|  java.lang.IllegalArgumentException thrown: duplicate element: 1
-|        at ImmutableCollections$SetN.<init> (ImmutableCollections.java:463)
-|        at Set.of (Set.java:521)
+Set<Integer> set = Set.of(1,2,3,4);
+List<Integer> list = List.of(1,2,1,2);
+Map<String, Integer> map = Map.of("key1", 1, "key2", 2);
+Map<String, Integer> mapLonger = Map.fromEntries(entry("key1", 1), entry("key2", 2));
 ----
 
 .Immutability vs views
 NOTE: copyOf() is a new tool yielding an immutable copy of the datastracture. Collections.unmodificable* are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
 
+.Gotcha:
+NOTE: cannot use Set.of to filter aways duplicated.
+
+[source,java]
+----
+jshell> Set.of(1,1)
+|  java.lang.IllegalArgumentException thrown: duplicate element: 1
+|        at ImmutableCollections$SetN.<init> (ImmutableCollections.java:463)
+|        at Set.of (Set.java:521)
+----
+
 === java.util.Optional.stream()
 
 [source,java]
 ----
+List<Optional<String>> listOfOptional = ....;
 List<String> filteredList = listOfOptionals.stream()
   .flatMap(Optional::stream)
   .collect(Collectors.toList());
