@@ -40,6 +40,36 @@ The big feature are[http://jdk.java.net/11/release-notes]:
 - Removal of Thread.destroy() and Thread.stop(Throwable) Methods (JDK-8204243)
 - Removal of com.sun.awt.AWTUtilities Class (JDK-8200149)
 
+JAXB is not provided by the JDK anymore so you need an external dependency for it:
+
+----
+<dependency>
+	<groupId>javax.xml.bind</groupId>
+	<artifactId>jaxb-api</artifactId>
+	<version>2.3.0</version>
+</dependency>
+<dependency>
+	<groupId>org.glassfish.jaxb</groupId>
+	<artifactId>jaxb-runtime</artifactId>
+	<version>2.3.0.1</version>
+</dependency>
+----
+
+=== var in lambda
+
+http://openjdk.java.net/jeps/323
+
+----
+(var x, var y) -> x.process(y)
+----
+
+now it is equivalent to:
+
+----
+(x, y) -> x.process(y)
+----
+
+
 === Optional.isEmpty()
 
 === ArrayIndexOutOfBounds
