@@ -27,7 +27,16 @@ The focus however is on the language level changes, not runtime.
 
 == Upgrade to Java11
 
-Java11 is the new LTS version of java. Once you support this release you can take advantages of all new APIs introduced since Java9.
+Java11 is the new LTS version. The big feature are:
+
+- removal of Corba and Java EE.
+- unicode 9 and 10 support
+
+=== Optional.isEmpty()
+
+=== ArrayIndexOutOfBounds
+
+improved message with index and current size of the array
 
 === Character.toString(int)
 
@@ -37,6 +46,8 @@ This method returns the string representation for the given Unicode code point a
 ----
 include::snippets/character_toString.jsh[]
 ----
+
+
 
 === String.lines()
 
@@ -126,15 +137,26 @@ nullOutputStream()
 
 == Upgrade to Java10
 
-=== local type inference
-
 This is the big new feature of Java 10, introduced by http://openjdk.java.net/jeps/286
+There are also other important features:
+- JEP 304 garbage collector interface
+- JEP 317 experimental java based JIT compiler
+- JEP 307 Parallel full gc for G1
+- JEP 310 application class-data sharing
+- JEP 312 thread-local handshakes
+- JEP 313 javah removal
+- JEP 314 unicode extentions
+- JEP 319 root certificates, to easy migration from oracle JDK -> open JDK
+- removal of policytool
+
+=== local type inference
 
 [source,java]
 ----
 include::snippets/java10_var.jsh[]
 ----
 
+It is important to know that var is not a keyword, it is a special type. In this way you can continue to use var as variable name or method name.
 
 Now it is possible to express things not possible before, use wisely:
 
@@ -152,9 +174,22 @@ a.m();
 
 ----
 
+=== Docker awareness
+
+JVM now can detect cpu/memory settings when run inside a container.
+
+=== new javadoc @Summary tag
+
+
+=== java.io.Reader.transferTo(Writer)
+
+=== RuntimeMXBean.getPid()
+
 == Upgrade to Java9
 
-=== JShell
+Java9 delivers to us:
+- Project Jigsaw http://openjdk.java.net/projects/jigsaw/
+- Jshell http://openjdk.java.net/jeps/222
 
 
 === Immutable collections
@@ -183,6 +218,11 @@ jshell> Set.of(1,1)
 |        at ImmutableCollections$SetN.<init> (ImmutableCollections.java:463)
 |        at Set.of (Set.java:521)
 ----
+
+Now it is also possible to use java.util.stream.Collectors
+to build an unmodificableList/Set/Map.
+
+
 
 === java.util.Optional.stream()
 
