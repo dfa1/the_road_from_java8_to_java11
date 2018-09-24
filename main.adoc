@@ -30,8 +30,8 @@ The focus however is on the language level changes, not runtime.
 Java11 is the new LTS version.
 
 The big feature are[http://jdk.java.net/11/release-notes]:
-- removal of Corba and Java EE.
-- unicode 9 and 10 support
+- removal of Corba and Java EE;
+- unicode 9 and 10 support.
 
 === Upgrade problems
 
@@ -331,6 +331,8 @@ List<String> filteredList = listOfOptionals.stream()
 
 === Stream.takeWhile()/dropWhile()
 
+https://bugs.openjdk.java.net/browse/JDK-8071597
+
 Another nice addiction to the Stream API:
 
 ----
@@ -359,16 +361,39 @@ StackWalker
 StackWalker instances are thread-safe and thus can be shared between threads: each thread will see its own stack.
 Additionally a security check is performed on creation of the StackWalker instance, no further checks are performed later.
 
-=== @SafeVarags on private methods
+=== `@SafeVarags` on private methods
+
 Part of JEP 213 http://openjdk.java.net/jeps/213.
 
 https://bugs.openjdk.java.net/browse/JDK-7196160
 
-=== private methods in interfaces
+Now it is possible to use @SafeVarargs also for private methods.
+
+.TODO: example
+
+=== `private` methods in interfaces
+
 Part of JEP 213 http://openjdk.java.net/jeps/213.
 
-=== cannot use _ anymore
+.TODO: example
+
+=== `_` identifier
+
 Part of JEP 213 http://openjdk.java.net/jeps/213.
+
+Now it is forbidden to use `_` as identifier.
+
+----
+jshell> Predicate<Integer> pred = _ -> false;
+|  Error:
+|  '_' used as an identifier
+|    (use of '_' as an identifier is forbidden for lambda parameters)
+|  Predicate<Integer> pred = _ -> false;
+|                            ^
+----
+
+This is a trivial source-level incompatibility to fix.
+
 
 === Version
 
@@ -399,15 +424,15 @@ Now we have a nice standard API to do that:
 Runtime.Version version = Runtime.version();
 ----
 
-`Version` it's a value object and it is `Comparable<Version>`. It is even possible to create a `Version` instance
-using an externally provided version string:
+`Version` it's a value object and it is `Comparable<Version>`. It is even possible to create a `Version`
+instance using an externally provided version string:
 
 [source,java]
 ----
 include::snippets/java9_version.jsh[]
 ----
 
-=== java.lang.ProcessHandle
+=== `java.lang.ProcessHandle`
 
 Obtain information about JVM itself:
 
@@ -422,13 +447,25 @@ List all system processes:
 include::snippets/java9_process_list.jsh[]
 ----
 
-=== @Deprecated enhancements
+=== `@Deprecated` enhancements
 
 http://openjdk.java.net/jeps/277
 
-@Deprecate(since="1.0", forRemoval=true)
+It is possible to mark a method/class for removal and to specify the
 
+----
+@Deprecate(forRemoval=true)
+public void foo() {
 
+}
+----
+
+----
+@Deprecate(since="1.0")
+public void bar() {
+
+}
+----
 
 === Unified JVM logging
 
@@ -486,7 +523,7 @@ The big deliver for Java8 is:
 
 Neverthless the are hidden gem in this release that simplifies a lot certain tasks.
 
-=== java.io.UncheckedIOException
+=== `java.io.UncheckedIOException`
 
 This is a little know class that wraps an `IOException` with an unchecked exception.
 
