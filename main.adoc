@@ -12,6 +12,7 @@ v0.1, 2018-09-19
 == About the Author
 
 You can contact {author} at {email}. {firstname} loves to hear from other developers.
+Check https://dfa.bitbucket.io.
 
 == Introduction
 
@@ -311,10 +312,10 @@ in Java9 it is possible to write:
 [source,java]
 ----
 List<String> filteredList = listOfOptionals.stream()
-  .flatMap(Optional::stream) <3>
+  .flatMap(Optional::stream) <1>
   .collect(Collectors.toList());
 ----
-<3> `Optional` as `Stream`
+<1> `Optional` as `Stream`
 
 `Optional.stream()` is straightforward:
 
