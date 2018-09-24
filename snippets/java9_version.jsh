@@ -1,6 +1,6 @@
-import java.lang.Runtime.Version
-import java.lang.System
+import java.lang.Runtime.Version;
+import java.lang.System;
 
-String versionProperty = System.getProperty("java.version")
-Version parsedVersion = Version.parse(versionProperty)
-System.out.println(parsedVersion.version())
+String versionString = System.getProperty("java.version");
+Version version = Version.parse(versionString);
+System.out.printf("java %d.%d%n", version.major(), version.minor());

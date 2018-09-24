@@ -223,6 +223,25 @@ JVM now can detect cpu/memory settings when run inside a container.
 
 === java.io.Reader.transferTo(Writer)
 
+This is a long awaited feature, usually provided by external libraries such as apache IOUtils.
+
+[source, java]
+----
+jshell> import java.io.*
+
+jshell> var a = new StringReader("hello world");
+a ==> java.io.StringReader@3abbfa04
+
+jshell> var b = new StringWriter();
+b ==>
+
+jshell> a.transferTo(b)
+$4 ==> 11
+
+jshell> b
+b ==> hello world
+----
+
 === RuntimeMXBean.getPid()
 
 == Upgrade to Java9
@@ -233,6 +252,8 @@ Two of the most important are:
 - Project Jigsaw http://openjdk.java.net/projects/jigsaw/
 - Jshell http://openjdk.java.net/jeps/222
 - new HTTP client http://openjdk.java.net/jeps/110
+
+Describing any of these items is beyond the scope of this document, especially Project Jigsaw (modules).
 
 === Immutable collections
 
@@ -270,7 +291,7 @@ Given:
 
 [source,java]
 ----
-List<Optional<String>> listOfOptional = ....;
+List<Optional<String>> listOfOptionals = something();
 ----
 
 in Java8:
@@ -282,6 +303,8 @@ List<String> filteredList = listOfOptionals.stream()
   .map(Optional::get) <2>
   .collect(Collectors.toList());
 ----
+<1> discarding empty optionals
+<2> unwrapping optionals
 
 in Java9 it is possible to write:
 
@@ -291,10 +314,24 @@ List<String> filteredList = listOfOptionals.stream()
   .flatMap(Optional::stream) <3>
   .collect(Collectors.toList());
 ----
+<3> `Optional` as `Stream`
 
-In practice <1> and <2> are merged into <3>.
+`Optional.stream()` is straightforward:
 
-=== Stream.takeWhile()
+[source,java]
+----
+    public Stream<T> stream() {
+        if (!isPresent()) {
+            return Stream.empty();
+        } else {
+            return Stream.of(value);
+        }
+    }
+----
+
+=== Stream.takeWhile()/dropWhile()
+
+Another nice addiction to the Stream API:
 
 ----
 IntStream
@@ -303,13 +340,24 @@ IntStream
   .forEach(System.out::println);
 ----
 
+
 === Stack walk API
+
 http://openjdk.java.net/jeps/259
 
 This is useful in several occasions and now it is possible to capture a partial stacktrace
 in a very simple and effective way.
 
-example
+For example getting the caller it is trivial now:
+
+----
+StackWalker
+	.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE)
+	.getCallerClass()
+----
+
+StackWalker instances are thread-safe and thus can be shared between threads: each thread will see its own stack.
+Additionally a security check is performed on creation of the StackWalker instance, no further checks are performed later.
 
 === @SafeVarags on private methods
 Part of JEP 213 http://openjdk.java.net/jeps/213.
@@ -350,6 +398,9 @@ Now we have a nice standard API to do that:
 ----
 Runtime.Version version = Runtime.version();
 ----
+
+`Version` it's a value object and it is `Comparable<Version>`. It is even possible to create a `Version` instance
+using an externally provided version string:
 
 [source,java]
 ----
@@ -422,15 +473,21 @@ http://openjdk.java.net/jeps/254
 This is just a more efficient internal representation of java.lang.String, no public methods
 will be changed.
 
-In practice internal representation of string will be changed from char[] to byte[] + flag or
-ISO-8859-1/Latin-1 (one byte per character) to UTF-16 (two bytes per character). This
-should halve the memory required to represent constant strings, like database column names
-or any other ascii string.
+In practice, the internal representation of string has been changed from `char[]` to `byte[]` + flag.
+The purpose of the flag is to store which encoding to use:
+`ISO-8859-1/Latin-1` (one byte per character) or UTF-16 (two bytes per character).
 
 == Upgrade to Java8
 
-The big deliver on Java8 was Project Lambda and java.time.
+The big deliver for Java8 is:
+
+- Project Lambda http://openjdk.java.net/projects/lambda/
+- ThreeTen http://openjdk.java.net/projects/threeten/.
+
+Neverthless the are hidden gem in this release that simplifies a lot certain tasks.
 
 === java.io.UncheckedIOException
 
-This is a little know class
+This is a little know class that wraps an `IOException` with an unchecked exception.
+
+
