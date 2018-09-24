@@ -1,4 +1,4 @@
-= What's new with Java
+= Migration to Java11
 v0.1, 2018-09-19
 :author: Davide Angelocola
 :firstname: Davide
@@ -8,11 +8,7 @@ v0.1, 2018-09-19
 :doctype: book
 :creator: {author}
 :source-highlighter: prettify
-
-== About the Author
-
-You can contact {author} at {email}. {firstname} loves to hear from other developers.
-Check https://dfa.bitbucket.io.
+:homepage: https://dfa.bitbucket.io
 
 == Introduction
 
