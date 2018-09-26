@@ -34,8 +34,8 @@ The big feature are[http://jdk.java.net/11/release-notes]:
 
 - http://openjdk.java.net/jeps/320 provide missing JARs like JavaEE, JavaFX, etc
 - https://bugs.openjdk.java.net/browse/JDK-8060192
-- Removal of Thread.destroy() and Thread.stop(Throwable) Methods (JDK-8204243)
-- Removal of com.sun.awt.AWTUtilities Class (JDK-8200149)
+- removal of Thread.destroy() and Thread.stop(Throwable) Methods (JDK-8204243)
+- removal of com.sun.awt.AWTUtilities Class (JDK-8200149)
 
 JAXB is not provided by the JDK anymore so you need an external dependency for it:
 
@@ -51,6 +51,13 @@ JAXB is not provided by the JDK anymore so you need an external dependency for i
 	<version>2.3.0.1</version>
 </dependency>
 ----
+
+===  java.net.http
+
+http://openjdk.java.net/groups/net/httpclient/intro.html
+
+Introduced in Java9, and promoted from incubator in Java11.
+.TODO: examples
 
 === var in lambda
 
@@ -81,8 +88,6 @@ This method returns the string representation for the given Unicode code point a
 ----
 include::snippets/character_toString.jsh[]
 ----
-
-
 
 === String.lines()
 
@@ -154,23 +159,30 @@ $4 ==> ""
 .TODO
 cover also stripLeading()/stripTrailing()
 
-=== Null objects
+=== Null objects for Reader/Writer and InputStream/OutputStream
 
 https://download.java.net/java/early_access/jdk11/docs/api/java.base/java/io/Reader.html#nullReader()
-Reader
-nullReader()
-We can get a  Reader  that does nothing.
 
-Writer
-nullWriter()
-We can get a  Writer that does nothing.
+`Reader.nullReader()`
+`Writer.nullWriter()`
+`InputStream.nullInputStream()`
+`OutputStream.nullOutputStream()`
 
-InputStream
-nullInputStream()
-We can get an  InputStream  that does nothing.
+=== Launch Single-File Source-Code Programs
 
-OutputStream
-nullOutputStream()
+http://openjdk.java.net/jeps/330
+
+----
+dfa@aman:~ $ vim aa.java
+dfa@aman:~ $ cat aa.java
+public class Test {
+	public static void main(String[] args) {
+		System.out.println("hello world!");
+	}
+}
+dfa@aman:~ $ java aa.java
+hello world!
+----
 
 == Upgrade to Java10
 
