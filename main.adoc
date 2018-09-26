@@ -304,14 +304,25 @@ New APIs are:
 Set<Integer> set = Set.of(1,2,3,4);
 List<Integer> list = List.of(1,2,1,2);
 Map<String, Integer> map = Map.of("key1", 1, "key2", 2);
-Map<String, Integer> mapLonger = Map.fromEntries(entry("key1", 1), entry("key2", 2));
+Map<String, Integer> mapLonger = Map.ofEntries(Map.entry("key1", 1), Map.entry("key2", 2));
 ----
 
 .Immutability vs views
-NOTE: copyOf() is a new tool yielding an immutable copy of the datastracture. Collections.unmodificable* are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
+NOTE: `copyOf()` is a new method yielding an immutable copy, with some optimizations. `Collections.unmodificable` are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
+
+----
+jshell> List<?> a =List.of(1,2,3)
+a ==> [1, 2, 3]
+
+jshell> List<?> b = List.copyOf(a)
+b ==> [1, 2, 3]
+
+jshell> a == b
+$7 ==> true
+----
 
 .Gotcha:
-NOTE: cannot use Set.of to filter aways duplicated.
+NOTE: cannot use `Set.of` to filter aways duplicated.
 
 [source,java]
 ----
@@ -321,7 +332,7 @@ jshell> Set.of(1,1)
 |        at Set.of (Set.java:521)
 ----
 
-Now it is also possible to use java.util.stream.Collectors
+Now it is also possible to use `java.util.stream.Collectors`
 to build an unmodificableList/Set/Map.
 
 === java.util.Optional.stream()
