@@ -12,15 +12,19 @@ v0.1, 2018-09-19
 
 == Introduction
 
-As Java developer we will busy upgrading our code bases to newest Java LTS release: Java 11.
-I think it is important to document, with examples, how to take advantage of new Java classes and idioms.
-The focus however is on the language level changes, not runtime.
+As Java developers we will very busy upgrading our code bases to newest Java releases.
+This will be a slow process, especially regarding the upgrade from classpath to the module
+path.
+
+It is important to document, with well written examples, how to take advantage
+of new Java classes and idioms.
 
 === Principles
 
-* use standard library as much as possible
-* examples are compiled with JShell
-* step by step migrations
+* the main focus is on the language level changes;
+* use standard library as much as possible;
+* redirect to release notes, JEPS and bug reports;
+* examples are compiled with JShell.
 
 == Upgrade to Java11
 
