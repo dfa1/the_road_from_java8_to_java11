@@ -1,5 +1,5 @@
 = The road from Java8 to Java9
-v0.1, 2018-09-19
+v0.2, 2018-09-27
 :author: Davide Angelocola
 :firstname: Davide
 :lastname: Angelocola
@@ -104,7 +104,27 @@ TODO: example
 
 === ArrayIndexOutOfBounds
 
-improved message with index and current size of the array
+Improved error message with index and current size of the array:
+
+----
+jshell> int[] a = {1}
+a ==> int[1] { 1 }
+
+jshell> a[4]
+|  Exception java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 1
+|        at (#2:1)
+----
+
+In previous Java versions we have a much more cryptic message:
+
+----
+jshell> int[] a ={1}
+a ==> int[1] { 1 }
+
+jshell> a[4]
+|  java.lang.ArrayIndexOutOfBoundsException thrown: 4
+|        at (#4:1)
+----
 
 === Character.toString(int)
 
