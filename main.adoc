@@ -1,4 +1,4 @@
-= Migration to Java11
+= The road from Java8 to Java9
 v0.1, 2018-09-19
 :author: Davide Angelocola
 :firstname: Davide
@@ -28,7 +28,14 @@ Java11 is the new LTS version.
 
 The big feature are[http://jdk.java.net/11/release-notes]:
 - removal of Corba and Java EE;
-- unicode 9 and 10 support.
+- removal of Web Start, with no clear replacement;
+- removal of Java applets;
+- removal of JavaFX: the FX libraries have moved to the OpenJFX project and are removed from
+  the core;
+- paid support for Oracle JDK.
+
+The last point is critical, since now in order to use JDK11 in production you have to subscribe
+to Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/overview/javasesubscriptionfaq-4891443.html.
 
 === Upgrade problems
 
@@ -58,6 +65,13 @@ http://openjdk.java.net/groups/net/httpclient/intro.html
 
 Introduced in Java9, and promoted from incubator in Java11.
 .TODO: examples
+
+=== Security
+
+This version includes several new important and modern crypto features:
+- TLS 1.3;
+- ChaCha20 & Poly1305 crypto algorithms;
+- Key Agreement with Curve25519 and Curve448.
 
 === var in lambda
 
@@ -183,6 +197,12 @@ public class Test {
 dfa@aman:~ $ java aa.java
 hello world!
 ----
+
+=== Unicode upgrades
+
+This release includes support for unicode 9 and 10. For example now it is possible to use Bitcoin, since the Bitcoin sign is part of Unicode 10.0 (released June 2017) with code point U+20BF (₿).
+
+
 
 == Upgrade to Java10
 
