@@ -1,0 +1,11 @@
+image: ruby-2.5
+
+pipelines:
+  tags:
+    v*:
+      - step:
+          caches:
+            - bundler
+          script:
+            - asciidoctor-pdf main.adoc --out-file the_road_from_java8_to_java9-${BITBUCKET_TAG}.pdf
+            - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"the_road_from_java8_to_java9-${BITBUCKET_TAG}.pdf"
