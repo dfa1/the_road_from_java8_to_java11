@@ -1,5 +1,6 @@
-= The road from Java8 to Java9 [DRAFT]
-v0.2, 2018-09-27
+= The road from Java8 to Java11
+Davide Angelocola <davide.angelocola@gmail.com>
+
 :author: Davide Angelocola
 :firstname: Davide
 :lastname: Angelocola
@@ -36,7 +37,8 @@ of new Java classes and idioms.
 
 ==== License
 
-is licensed under a https://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License].
+This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License].
+
 
 == Upgrade to Java11
 

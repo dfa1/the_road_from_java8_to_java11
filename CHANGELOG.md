@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - license CC-BY-SA
+- publishing pipeline
 
 ## [0.0.1] - 2018-09-26
 - first draft
