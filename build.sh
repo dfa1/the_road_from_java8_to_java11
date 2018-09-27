@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-bundler
+bundle install
 asciidoctor-pdf                                  \
   --attribute revnumber="$(git describe)"        \
   --attribute revdate="$(date +%Y-%m-%d)"        \

@@ -1,12 +1,10 @@
-image: ruby-2.5
+image: ruby:2.5.0
 
 pipelines:
   tags:
     v*:
       - step:
-          caches:
-            - bundler
           script:
-            - build.sh
-            - mv the_road_from_java8_to_java9.pdf he_road_from_java8_to_java9-${BITBUCKET_TAG}.pdf
+            - ./build.sh
+            - mv the_road_from_java8_to_java11.pdf the_road_from_java8_to_java11-${BITBUCKET_TAG}.pdf
             - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"the_road_from_java8_to_java11-${BITBUCKET_TAG}.pdf"
