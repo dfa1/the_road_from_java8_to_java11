@@ -214,6 +214,42 @@ https://download.java.net/java/early_access/jdk11/docs/api/java.base/java/io/Rea
 
 These objects are very useful during unit testing.
 
+=== `java.nio.file.Files`
+
+* `String readString(Path, Charset`): reads all content from a file into a string, decoding from bytes to characters using the specified charset;
+* `Path writeString(Path, CharSequence, Charset, OpenOption[])`: write a `CharSequence` (e.g. `String`, `StringBuilder`) to a file. Characters are encoded into bytes using the specified charset.
+
+it is very convenient to use `java.nio.charset.StandardCharsets`, https://docs.oracle.com/javase/7/docs/api/java/nio/charset/StandardCharsets.html
+
+=== `java.nio.Path`
+
+This is a very nice shorcut to build paths:
+
+----
+jshell> Path.of("dir", "subdir", "file")
+$2 ==> dir/subdir/file
+----
+
+Returns a `Path` by converting a path string, or a sequence of strings that when joined form
+a path string. Please note that this API is following the _Item 42_ of _Effective Java_:
+
+----
+jshell> Path.of()
+|  Error:
+|  no suitable method found for of(no arguments)
+|      method java.nio.file.Path.of(java.lang.String,java.lang.String...) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.nio.file.Path.of(java.net.URI) is not applicable
+|        (actual and formal argument lists differ in length)
+|  Path.of()
+|  ^-----^
+----
+
+because the definition is:
+
+----
+static Path	of(String first, String... more)
+----
 === Launch Single-File Source-Code Programs
 
 http://openjdk.java.net/jeps/330
