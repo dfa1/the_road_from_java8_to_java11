@@ -26,6 +26,14 @@ of new Java classes and idioms.
 * redirect to release notes, JEPS and bug reports;
 * examples are compiled with JShell.
 
+==== Author
+
+- {firstname} {lastname} <{email}>
+
+==== Contributors
+
+- Karrie Moore
+
 == Upgrade to Java11
 
 Java11 is the new LTS version, check http://jdk.java.net/11/release-notes for official release notes.
