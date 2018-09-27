@@ -5,6 +5,10 @@
 * What's new in Java API
 * Upgrade and examples
 
+### Build
+
+`./build.sh`
+
 ### Sources
 
 * https://dzone.com/articles/api-updates-in-java-se-11-189
