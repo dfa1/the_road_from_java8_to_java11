@@ -22,10 +22,10 @@ of new Java classes and idioms.
 
 === Principles
 
-* the main focus is on the language level changes;
-* use standard library as much as possible;
-* redirect to release notes, JEPS and bug reports;
-* examples are compiled with JShell.
+* the main focus is on the language level changes
+* use standard library as much as possible
+* redirect to release notes, JEPS and bug reports
+* examples are compiled with JShell
 
 ==== Author
 
@@ -63,6 +63,7 @@ to Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/
 * removal of `Thread.destroy()` and `Thread.stop(Throwable)` Methods, see https://bugs.openjdk.java.net/browse/JDK-8204243
 * removal of `com.sun.awt.AWTUtilities` Class, see https://bugs.openjdk.java.net/browse/JDK-8200149
 * source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
+* removal of removal of `sun.misc.Unsafe.defineClass`, see https://bugs.openjdk.java.net/browse/JDK-8193033
 
 JAXB is not provided by the JDK anymore so it is required to provide an external dependency for it.
 Using apache maven would be:
@@ -289,11 +290,13 @@ dfa@aman:~ $ java aa.java
 hello world!
 ----
 
-=== Unicode upgrades
+=== Unicode
 
-This release includes support for unicode 9 and 10.
+http://openjdk.java.net/jeps/327
 
-For example now it is possible to use Bitcoin, since the Bitcoin sign is part of Unicode 10.0
+This release includes combined support for both _Unicode 9.0_ as well as _Unicode 10.0_.
+
+By now it is possible to use Bitcoin, since the Bitcoin sign is part of _Unicode 10.0_
 (released June 2017) with code point `U+20BF`.
 
 == Upgrade to Java10
@@ -309,7 +312,7 @@ There are also other important features:
  * JEP 313 javah removal
  * JEP 314 unicode extentions
  * JEP 319 root certificates, to easy migration from oracle JDK -> open JDK
- * removal of policytool
+ * removal of `policytool`
 
 === local type inference
 
@@ -340,11 +343,21 @@ a.m();
 
 JVM now can detect cpu/memory settings when run inside a container.
 
-=== new javadoc @Summary tag
-
 TODO: example
 
-=== java.io.Reader.transferTo(Writer)
+=== new javadoc `@summary` tag
+
+https://bugs.openjdk.java.net/browse/JDK-8173425
+
+In order to be precise and avoid ambiguities around the special handling of the first sentence of javadoc,
+it is possible to use `@summary`:
+
+----
+{@summary This is the first sentence.} This is the second sentence.
+----
+
+
+=== `java.io.Reader.transferTo(Writer)`
 
 This is a long awaited feature, usually provided by external libraries such as apache IOUtils.
 
@@ -365,9 +378,17 @@ jshell> b
 b ==> hello world
 ----
 
-=== RuntimeMXBean.getPid()
+=== `RuntimeMXBean.getPid()`
 
-.TODO: example
+This new method returns the process ID representing the running Java virtual machine:
+
+----
+jshell> import java.lang.management.*;
+
+jshell> ManagementFactory.getRuntimeMXBean().getPid()
+$8 ==> 11429
+
+----
 
 == Upgrade to Java9
 
@@ -394,10 +415,40 @@ Map<String, Integer> mapLonger = Map.ofEntries(Map.entry("key1", 1), Map.entry("
 ----
 
 .Immutability vs views
-NOTE: `copyOf()` is a new method yielding an immutable copy, with some optimizations. `Collections.unmodificable` are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
+NOTE: `Collections.unmodificable` are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
 
 ----
-jshell> List<?> a =List.of(1,2,3)
+jshell> var list = new ArrayList<>()
+list ==> []
+
+jshell> var unmodificableList = Collections.unmodifiableList(list)
+unmodificableList ==> []
+
+jshell> list.add(1)
+$3 ==> true
+
+jshell> unmodificableList
+unmodificableList ==> [1]
+----
+
+By using these new methods you get immutable data structures:
+
+----
+jshell> var immutableList = List.of();
+immutableList ==> []
+
+jshell> immutableList.add(1)
+|  Exception java.lang.UnsupportedOperationException
+|        at ImmutableCollections.uoe (ImmutableCollections.java:71)
+|        at ImmutableCollections$AbstractImmutableCollection.add (ImmutableCollections.java:75)
+|        at (#6:1)
+----
+
+.Gotcha:
+NOTE: sometimes `List.copyOf` is a no-op
+
+----
+jshell> List<?> a = List.of(1,2,3)
 a ==> [1, 2, 3]
 
 jshell> List<?> b = List.copyOf(a)
@@ -406,6 +457,7 @@ b ==> [1, 2, 3]
 jshell> a == b
 $7 ==> true
 ----
+
 
 .Gotcha:
 NOTE: cannot use `Set.of` to filter aways duplicated.
@@ -421,7 +473,7 @@ jshell> Set.of(1,1)
 Now it is also possible to use `java.util.stream.Collectors`
 to build an unmodificableList/Set/Map.
 
-=== java.util.Optional.stream()
+=== `java.util.Optional.stream()`
 
 Given:
 
@@ -465,7 +517,7 @@ List<String> filteredList = listOfOptionals.stream()
     }
 ----
 
-=== Stream.takeWhile()/dropWhile()
+=== `Stream.takeWhile()`/`Stream.dropWhile()`
 
 https://bugs.openjdk.java.net/browse/JDK-8071597
 
@@ -477,7 +529,6 @@ IntStream
   .takeWhile(n -> n < 10)
   .forEach(System.out::println);
 ----
-
 
 === Stack walk API
 
@@ -587,7 +638,7 @@ include::snippets/java9_process_list.jsh[]
 
 http://openjdk.java.net/jeps/277
 
-It is possible to mark a method/class for removal and to specify the
+It is possible to mark a method/class for removal (`forRemoval`) and when the deprecation started (`since`):
 
 ----
 @Deprecate(forRemoval=true)
@@ -606,6 +657,7 @@ public void bar() {
 === Unified JVM logging
 
 http://openjdk.java.net/jeps/158
+
 This is invaluable in debugging problems in production or during a big acceptance test.
 Now it is possible to capture and log interesting events happening inside the JVM.
 For example it is possible to include every tag around gc:
@@ -648,7 +700,7 @@ will be changed.
 
 In practice, the internal representation of string has been changed from `char[]` to `byte[]` + flag.
 The purpose of the flag is to store which encoding to use:
-`ISO-8859-1/Latin-1` (one byte per character) or UTF-16 (two bytes per character).
+`ISO-8859-1/Latin-1` (one byte per character) or `UTF-16` (two bytes per character).
 
 == Upgrade to Java8
 
