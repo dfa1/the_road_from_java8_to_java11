@@ -34,6 +34,7 @@ of new Java classes and idioms.
 ==== Contributors
 
 - Karrie Moore
+- Alessandro Sebastiani
 
 ==== License
 
@@ -51,8 +52,7 @@ The big feature are:
 * removal of Corba and Java EE;
 * removal of Web Start, with no clear replacement;
 * removal of Java applets;
-* removal of JavaFX: the FX libraries have moved to the OpenJFX project and are removed from
-* the core;
+* removal of JavaFX: the FX libraries have moved to the OpenJFX project;
 * paid support for Oracle JDK.
 
 The last point is critical, since now in order to use JDK11 in production you have to subscribe
