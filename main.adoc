@@ -282,7 +282,10 @@ hello world!
 
 === Unicode upgrades
 
-This release includes support for unicode 9 and 10. For example now it is possible to use Bitcoin, since the Bitcoin sign is part of Unicode 10.0 (released June 2017) with code point U+20BF (₿).
+This release includes support for unicode 9 and 10.
+
+For example now it is possible to use Bitcoin, since the Bitcoin sign is part of Unicode 10.0
+(released June 2017) with code point U+20BF.
 
 == Upgrade to Java10
 
