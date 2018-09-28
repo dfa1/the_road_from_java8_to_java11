@@ -40,32 +40,32 @@ of new Java classes and idioms.
 
 This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License].
 
-
 == Upgrade to Java11
 
 Java11 is the new LTS version, check http://jdk.java.net/11/release-notes for official release notes.
 
 The big feature are:
 
-* new java.net.http module;
-* TLS 1.3;
-* removal of Corba and Java EE;
-* removal of Web Start, with no clear replacement;
-* removal of Java applets;
-* removal of JavaFX: the FX libraries have moved to the OpenJFX project;
-* paid support for Oracle JDK.
+* new java.net.http module
+* TLS 1.3
+* removal of Corba and Java EE
+* removal of Web Start, with no clear replacement
+* removal of Java applets
+* removal of JavaFX: the FX libraries have moved to the OpenJFX project
+* paid support for Oracle JDK
 
 The last point is critical, since now in order to use JDK11 in production you have to subscribe
 to Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/overview/javasesubscriptionfaq-4891443.html.
 
 === Upgrade problems
 
-* http://openjdk.java.net/jeps/320 provide missing JARs
-* https://bugs.openjdk.java.net/browse/JDK-8060192
-* removal of Thread.destroy() and Thread.stop(Throwable) Methods (JDK-8204243)
-* removal of com.sun.awt.AWTUtilities Class (JDK-8200149)
+* http://openjdk.java.net/jeps/320 provide missing JARs;
+* removal of `Thread.destroy()` and `Thread.stop(Throwable)` Methods, see https://bugs.openjdk.java.net/browse/JDK-8204243
+* removal of `com.sun.awt.AWTUtilities` Class, see https://bugs.openjdk.java.net/browse/JDK-8200149
+* source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
 
-JAXB is not provided by the JDK anymore so you need an external dependency for it:
+JAXB is not provided by the JDK anymore so it is required to provide an external dependency for it.
+Using apache maven would be:
 
 ----
 <dependency>
@@ -93,7 +93,7 @@ Introduced in Java9, and promoted from incubator in Java11.
 
 This version includes several new important and modern crypto features:
 
-* TLS 1.3;
+* TLS 1.3, see https://bugs.openjdk.java.net/browse/JDK-8202625;
 * ChaCha20 & Poly1305 crypto algorithms;
 * Key Agreement with Curve25519 and Curve448.
 
@@ -111,12 +111,20 @@ now it is equivalent to:
 (x, y) -> x.process(y)
 ----
 
+The primary advantage is that now it is possible to annotate parameters, e.g. for static analysis.
 
-=== Optional.isEmpty()
+=== `Optional.isEmpty()`
 
-TODO: example
+In addition of `Optional.isPresent` now it is possible to use `Optional.isEmpty`:
 
-=== ArrayIndexOutOfBounds
+----
+Optional<String> arg = ...;
+if (arg.isEmpty()) {
+	logger.warn("arg is empty, defaulting to 'foo'");
+}
+----
+
+=== `ArrayIndexOutOfBounds`
 
 Improved error message with index and current size of the array:
 
@@ -140,7 +148,7 @@ jshell> a[4]
 |        at (#4:1)
 ----
 
-=== Character.toString(int)
+=== `Character.toString(int)`
 
 This method returns the string representation for the given Unicode code point as shown below:
 
@@ -149,7 +157,7 @@ This method returns the string representation for the given Unicode code point a
 include::snippets/character_toString.jsh[]
 ----
 
-=== String.lines()
+=== `String.lines()`
 
 Sometimes this is very convenient: get a stream divided by line breaks:
 
@@ -159,7 +167,7 @@ jshell> "a\nb\nc\n".lines().toUpperCase().toArray()
 $1 ==> Object[2] { "A", "B", "C }
 ----
 
-=== String.lines()
+=== `String.lines()`
 
 Repeat String for the specified number of times:
 
@@ -172,12 +180,12 @@ $7 ==> "testtesttest"
 [NOTE] check bondaries (-1, MAX_VALUE)
 
 
-=== String.isBlank()
+=== `String.isBlank()`
 
 This is correct but too technical, and perhaps the intent is not clear:
 
 ----
-    boolean blank = string.codePoints().allMatch(Character::isWhitespace);
+boolean blank = string.codePoints().allMatch(Character::isWhitespace);
 ----
 
 https://bugs.openjdk.java.net/browse/JDK-8200437
@@ -197,11 +205,12 @@ jshell> fullSpace.trim()
 $4 ==> "　"
 ----
 
-=== String.strip()
+=== `String.strip()`
 
 https://bugs.openjdk.java.net/browse/JDK-8200378
 
-While almost the same as trim()/trimLeft()/trimRight(), this takes full-width spaces as a space (0x20 ascii character). This new method is Unicode-aware based on Character.isWhitespace().
+While almost the same as `trim()`/`trimLeft()`/`trimRight(), this takes full-width spaces as a
+space (0x20 ascii character). This new method is Unicode-aware, by using `Character.isWhitespace()`.
 [source,java]
 ----
 jshell> var halfSpace = "\u0020"
@@ -285,7 +294,7 @@ hello world!
 This release includes support for unicode 9 and 10.
 
 For example now it is possible to use Bitcoin, since the Bitcoin sign is part of Unicode 10.0
-(released June 2017) with code point U+20BF.
+(released June 2017) with code point `U+20BF`.
 
 == Upgrade to Java10
 
