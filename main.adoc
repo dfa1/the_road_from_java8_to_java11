@@ -359,7 +359,7 @@ it is possible to use `@summary`:
 
 === `java.io.Reader.transferTo(Writer)`
 
-This is a long awaited feature, usually provided by external libraries such as apache IOUtils.
+This is a long awaited feature, usually provided by external libraries such as Apache IOUtils.
 
 [source, java]
 ----
@@ -457,7 +457,6 @@ b ==> [1, 2, 3]
 jshell> a == b
 $7 ==> true
 ----
-
 
 .Gotcha:
 NOTE: cannot use `Set.of` to filter aways duplicated.
@@ -691,7 +690,7 @@ $ java -Xlog:gc,gc+heap -jar myapp.jar
 ... exit
 ----
 
-=== Compact java.lang.String
+=== Compact Strings
 
 http://openjdk.java.net/jeps/254
 
@@ -707,7 +706,7 @@ The purpose of the flag is to store which encoding to use:
 The big deliver for Java8 is:
 
 - Project Lambda http://openjdk.java.net/projects/lambda/
-- ThreeTen http://openjdk.java.net/projects/threeten/.
+- ThreeTen http://openjdk.java.net/projects/threeten/
 
 Neverthless the are hidden gem in this release that simplifies a lot certain tasks.
 
