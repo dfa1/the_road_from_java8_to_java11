@@ -155,7 +155,7 @@ Sometimes this is very convenient: get a stream divided by line breaks:
 
 [source,java]
 ----
-jshell> "a\nb\nc\n".lines().toUpperCase).toArray()
+jshell> "a\nb\nc\n".lines().toUpperCase().toArray()
 $1 ==> Object[2] { "A", "B", "C }
 ----
 
