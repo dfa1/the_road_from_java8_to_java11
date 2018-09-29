@@ -2,6 +2,7 @@
 set -e
 bundle install
 asciidoctor-pdf                                  \
+  --failure-level WARN                           \
   --attribute revnumber="$(git describe)"        \
   --attribute revdate="$(date +%Y-%m-%d)"        \
   main.adoc                                      \
