@@ -544,8 +544,9 @@ StackWalker
 	.getCallerClass()
 ----
 
-StackWalker instances are thread-safe and thus can be shared between threads: each thread will see its own stack.
-Additionally a security check is performed on creation of the StackWalker instance, no further checks are performed later.
+`StackWalker` instances are thread-safe and thus can be shared between threads: each thread will see
+its own stack.
+Additionally a security check is performed on creation of the `StackWalker` instance, no further checks are performed later.
 
 === `@SafeVarags` on private methods
 
@@ -553,7 +554,7 @@ Part of JEP 213 http://openjdk.java.net/jeps/213.
 
 https://bugs.openjdk.java.net/browse/JDK-7196160
 
-Now it is possible to use @SafeVarargs also for private methods.
+Now it is possible to use `@SafeVarargs` also for private methods.
 
 .TODO: example
 
@@ -694,7 +695,7 @@ $ java -Xlog:gc,gc+heap -jar myapp.jar
 
 http://openjdk.java.net/jeps/254
 
-This is just a more efficient internal representation of java.lang.String, no public methods
+This is just a more efficient internal representation of `java.lang.String`, no public methods
 will be changed.
 
 In practice, the internal representation of string has been changed from `char[]` to `byte[]` + flag.
