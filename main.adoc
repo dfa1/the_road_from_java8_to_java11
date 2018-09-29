@@ -129,11 +129,24 @@ include::snippets/java11_http_client.java[]
 and let's start it using JEP 330:
 
 ----
-dfa@aman:~ $ java java11_http_client.java
+dfa@aman:~ $ java java11_http_client.java http://localhost/user-agent
 {
   "user-agent": "Java-http-client/11"
 }
 ----
+
+as expected.
+
+Let's try simulating a busy web server, that delays each requests by 5 seconds:
+
+----
+dfa@aman:~ $ java java11_http_client.java http://localhost/delay/5
+Exception in thread "main" java.net.http.HttpTimeoutException: request timed out
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:559)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:119)
+	at HttpClientDemo.main(java11_http_client.java:19)
+----
+
 
 === Security
 
