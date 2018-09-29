@@ -16,7 +16,6 @@ GEM
       safe_yaml (~> 1.0.4)
       thread_safe (~> 0.3.6)
       treetop (= 1.5.3)
-    coderay (1.1.2)
     css_parser (1.6.0)
       addressable
     hashery (2.1.2)
@@ -55,7 +54,6 @@ PLATFORMS
 DEPENDENCIES
   asciidoctor!
   asciidoctor-pdf!
-  coderay!
 
 BUNDLED WITH
    1.16.1
