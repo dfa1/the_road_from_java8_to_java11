@@ -1,14 +1,9 @@
 = The road from Java8 to Java11
-Davide Angelocola <davide.angelocola@gmail.com>
+Davide Angelocola <davide.angelocola+java11@gmail.com>
 
-:author: Davide Angelocola
-:firstname: Davide
-:lastname: Angelocola
-:email: davide.angelocola@gmail.com
 :copyright: CC-BY-SA 4.0
 :doctype: book
 :creator: {author}
-:source-highlighter: prettify
 :homepage: https://dfa.bitbucket.io
 
 == Introduction
@@ -29,7 +24,7 @@ of new Java classes and idioms.
 
 ==== Author
 
-- {firstname} {lastname} <{email}>
+- {firstname} {lastname} <{email}>, check also {homepage}
 
 ==== Contributors
 
