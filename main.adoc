@@ -336,9 +336,89 @@ a.m();
 
 === Docker awareness
 
-JVM now can detect CPU/memory settings when run inside a container.
 
-TODO: example
+JVM now can detect CPU/memory settings when run inside a container. Given a docker setup with 4 CPUs and 2GB of memory:
+
+----
+dfa@aman ~ $ docker container run -it --rm --cpus 1 openjdk:9-jdk-slim <1>
+Sep 29, 2018 7:56:31 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+|  Welcome to JShell -- Version 9.0.4
+|  For an introduction type: /help intro
+
+jshell> Runtime.getRuntime().availableProcessors()
+$1 ==> 4 <2>
+----
+<1> 1 CPU requested
+<2> 4 CPU available
+
+Before this release JVM was not aware of this `--cpus 1`, so this is why JVM sees 4 CPUs.
+Whereas in JDK10:
+
+----
+dfa@aman:~ $ docker container run -it --rm --cpus 1 openjdk:10-jdk-slim <1>
+Sep 29, 2018 8:11:29 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+|  Welcome to JShell -- Version 10.0.2
+|  For an introduction type: /help intro
+
+jshell> Runtime.getRuntime().availableProcessors()
+$1 ==> 1 <2>
+----
+<1> 1 CPU requested
+<2> 1 CPU available
+
+It is possible to use also a cpu-set:
+
+----
+dfa@aman:~ $ docker container run -it --rm --cpuset-cpus="1,2"  openjdk:10-jdk-slim
+Sep 29, 2018 8:14:53 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+|  Welcome to JShell -- Version 10.0.2
+|  For an introduction type: /help intro
+
+jshell> Runtime.getRuntime().availableProcessors()
+$1 ==> 2
+----
+
+Regarding memory setting, by default JVM uses 1/4 of the memory, 2 GB in the following example:
+
+----
+dfa@aman:~ $ docker container run -it --rm openjdk:10-jdk-slim
+Sep 29, 2018 8:20:47 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+|  Welcome to JShell -- Version 10.0.2
+|  For an introduction type: /help intro
+
+jshell> Runtime.getRuntime().maxMemory() / 1024 / 1024
+$2 ==> 500 <1>
+----
+<1> the JVM sees 500MB
+
+Without constraints JVM is going to use 1/4 of the available memory to docker, 500MB.
+
+----
+dfa@aman:~ $ docker container run -it --rm --memory 512M openjdk:10-jdk-slim <1>
+Sep 29, 2018 8:25:12 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+|  Welcome to JShell -- Version 10.0.2
+|  For an introduction type: /help intro
+
+jshell> Runtime.getRuntime().maxMemory() / 1024 / 1024
+$1 ==> 123 <2>
+----
+<1> requesting a constraint of memory
+<2> the JVM sees 123MB
+
+It is possible then to fine tune the memory settings by using JVM flags `-Xmx`, `-Xms`, etc.
+
+==== References
+More on this can be found in the following tickets:
+
+- improve docker container detection and resource configuration usage https://bugs.openjdk.java.net/browse/JDK-8146115
+- allow more flexibility in selecting Heap % of available RAM https://bugs.openjdk.java.net/browse/JDK-8186248
+- jcmd attach in linux should be relative to /proc/pid/root and namespace aware https://bugs.openjdk.java.net/browse/JDK-8179498
+
 
 === new javadoc `@summary` tag
 
