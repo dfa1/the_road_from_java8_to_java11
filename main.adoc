@@ -54,7 +54,7 @@ to Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/
 
 === Upgrade problems
 
-* http://openjdk.java.net/jeps/320 provide missing JARs
+* https://openjdk.java.net/jeps/320 provide missing JARs
 * removal of `Thread.destroy()` and `Thread.stop(Throwable)` Methods, see https://bugs.openjdk.java.net/browse/JDK-8204243
 * removal of `com.sun.awt.AWTUtilities` Class, see https://bugs.openjdk.java.net/browse/JDK-8200149
 * source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
@@ -80,7 +80,7 @@ This is a very good reference: https://stackoverflow.com/questions/48204141/repl
 
 === Launch Single-File Source-Code Programs
 
-http://openjdk.java.net/jeps/330
+https://openjdk.java.net/jeps/330
 
 ----
 dfa@aman:~ $ vim aa.java
@@ -96,7 +96,7 @@ hello world!
 
 ===  java.net.http
 
-http://openjdk.java.net/groups/net/httpclient/intro.html
+https://openjdk.java.net/groups/net/httpclient/intro.html
 
 Introduced in Java9, and promoted from incubator in Java11. This is a somewhat big API and imho it is
 a huge step from `java.net.URLConnection`.
@@ -157,7 +157,7 @@ This version includes several new important and modern crypto features:
 
 === var in lambda
 
-http://openjdk.java.net/jeps/323
+https://openjdk.java.net/jeps/323
 
 ----
 (var x, var y) -> x.process(y)
@@ -334,7 +334,7 @@ static Path	of(String first, String... more)
 
 === Unicode
 
-http://openjdk.java.net/jeps/327
+https://openjdk.java.net/jeps/327
 
 This release includes combined support for both _Unicode 9.0_ as well as _Unicode 10.0_.
 
@@ -343,7 +343,7 @@ By now it is possible to use Bitcoin, since the Bitcoin sign is part of _Unicode
 
 == Upgrade to Java10
 
-This is the big new feature of Java 10, introduced by http://openjdk.java.net/jeps/286
+This is the big new feature of Java 10, introduced by https://openjdk.java.net/jeps/286
 There are also other important features:
 
  * JEP 304 garbage collector interface
@@ -516,19 +516,19 @@ $8 ==> 11429
 
 Java9 delivers an impressive set of features, by far the most important are:
 
-- Project Jigsaw aka modules http://openjdk.java.net/projects/jigsaw/
-- JShell http://openjdk.java.net/jeps/222
+- Project Jigsaw aka modules https://openjdk.java.net/projects/jigsaw/
+- JShell https://openjdk.java.net/jeps/222
 - incubating new HTTP API https://openjdk.java.net/jeps/110
 
 Describing any of these items is beyond the scope of this document.
 By the way it is important to say that  __you don’t need modules to run on Java 9__.
 
-For the complete list of features is available at http://openjdk.java.net/projects/jdk9/
+For the complete list of features is available at https://openjdk.java.net/projects/jdk9/
 but let's dig some important API changes.
 
 === Immutable collections
 
-http://openjdk.java.net/jeps/269
+https://openjdk.java.net/jeps/269
 
 JEP 269 introduced some new factory methods for collections.
 New APIs are:
@@ -658,7 +658,7 @@ IntStream
 
 === Stack walk API
 
-http://openjdk.java.net/jeps/259
+https://openjdk.java.net/jeps/259
 
 This is useful in several occasions and now it is possible to capture a partial stacktrace
 in a very simple and effective way.
@@ -677,7 +677,7 @@ Additionally a security check is performed on creation of the `StackWalker` inst
 
 === `@SafeVarags` on private methods
 
-Part of JEP 213 http://openjdk.java.net/jeps/213.
+Part of JEP 213 https://openjdk.java.net/jeps/213.
 
 https://bugs.openjdk.java.net/browse/JDK-7196160
 
@@ -687,13 +687,13 @@ Now it is possible to use `@SafeVarargs` also for private methods.
 
 === `private` methods in interfaces
 
-Part of JEP 213 http://openjdk.java.net/jeps/213.
+Part of JEP 213 https://openjdk.java.net/jeps/213.
 
 .TODO: example
 
 === `_` identifier
 
-Part of JEP 213 http://openjdk.java.net/jeps/213.
+Part of JEP 213 https://openjdk.java.net/jeps/213.
 
 Now it is forbidden to use `_` as identifier.
 
@@ -710,7 +710,7 @@ This is a trivial source-level incompatibility to fix.
 
 === Version
 
-http://openjdk.java.net/jeps/223
+https://openjdk.java.net/jeps/223
 
 In legacy code bases it is possible to find various ways to determine which java
 version is running:
@@ -762,7 +762,7 @@ include::snippets/java9_process_list.jsh[]
 
 === `@Deprecated` enhancements
 
-http://openjdk.java.net/jeps/277
+https://openjdk.java.net/jeps/277
 
 It is possible to mark a method/class for removal (`forRemoval`) and when the deprecation started (`since`):
 
@@ -782,7 +782,7 @@ public void bar() {
 
 === Unified JVM logging
 
-http://openjdk.java.net/jeps/158
+https://openjdk.java.net/jeps/158
 
 This is invaluable in debugging problems in production or during a big acceptance test.
 Now it is possible to capture and log interesting events happening inside the JVM.
@@ -819,7 +819,7 @@ $ java -Xlog:gc,gc+heap -jar myapp.jar
 
 === Compact Strings
 
-http://openjdk.java.net/jeps/254
+https://openjdk.java.net/jeps/254
 
 This is just a more efficient internal representation of `java.lang.String`, no public methods
 will be changed.
@@ -832,8 +832,8 @@ The purpose of the flag is to store which encoding to use:
 
 The big deliver for Java8 is:
 
-- Project Lambda http://openjdk.java.net/projects/lambda/
-- ThreeTen http://openjdk.java.net/projects/threeten/
+- Project Lambda https://openjdk.java.net/projects/lambda/
+- ThreeTen https://openjdk.java.net/projects/threeten/
 
 Nevertheless the are hidden gem in this release that simplifies a lot certain tasks.
 
