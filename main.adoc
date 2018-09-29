@@ -17,10 +17,10 @@ of new Java classes and idioms.
 
 === Principles
 
-* the main focus is on the language level changes
+* main focus is on the language level changes, second focus on deploy/production
 * use standard library as much as possible
-* redirect to release notes, JEPS and bug reports
-* examples are compiled with JShell
+* use JShell as much as possible
+* provide links to release notes, JEPS and bug reports
 
 ==== Author
 
@@ -54,7 +54,7 @@ to Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/
 
 === Upgrade problems
 
-* http://openjdk.java.net/jeps/320 provide missing JARs;
+* http://openjdk.java.net/jeps/320 provide missing JARs
 * removal of `Thread.destroy()` and `Thread.stop(Throwable)` Methods, see https://bugs.openjdk.java.net/browse/JDK-8204243
 * removal of `com.sun.awt.AWTUtilities` Class, see https://bugs.openjdk.java.net/browse/JDK-8200149
 * source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
@@ -455,7 +455,7 @@ b ==> hello world
 
 === `RuntimeMXBean.getPid()`
 
-This new method returns the process ID representing the running Java virtual machine:
+This new method returns the process ID representing the running JVM:
 
 ----
 jshell> import java.lang.management.*;
@@ -472,13 +472,16 @@ Java9 delivers an impressive list of features (http://openjdk.java.net/projects/
 Two of the most important are:
 - Project Jigsaw http://openjdk.java.net/projects/jigsaw/
 - Jshell http://openjdk.java.net/jeps/222
-- new HTTP client http://openjdk.java.net/jeps/110
+- new HTTP client http://openjdk.java.net/jeps/110 as incubating module
 
-Describing any of these items is beyond the scope of this document, especially Project Jigsaw (modules). By the way: __you don’t need modules to run on Java 9__.
+Describing any of these items is beyond the scope of this document, especially Project Jigsaw (modules).
+By the way it is important to say that  __you don’t need modules to run on Java 9__.
 
 === Immutable collections
 
-JEP 269 http://openjdk.java.net/jeps/269 introduced some new factory methods for collections.
+http://openjdk.java.net/jeps/269
+
+JEP 269 introduced some new factory methods for collections.
 New APIs are:
 
 [source,java]
@@ -578,17 +581,17 @@ List<String> filteredList = listOfOptionals.stream()
 ----
 <1> `Optional` as `Stream`
 
-`Optional.stream()` is straightforward:
+`Optional.stream()` implementation is straightforward:
 
 [source,java]
 ----
-    public Stream<T> stream() {
-        if (!isPresent()) {
-            return Stream.empty();
-        } else {
-            return Stream.of(value);
-        }
+public Stream<T> stream() {
+    if (!isPresent()) {
+        return Stream.empty();
+    } else {
+        return Stream.of(value);
     }
+}
 ----
 
 === `Stream.takeWhile()`/`Stream.dropWhile()`
@@ -655,7 +658,6 @@ jshell> Predicate<Integer> pred = _ -> false;
 ----
 
 This is a trivial source-level incompatibility to fix.
-
 
 === Version
 
