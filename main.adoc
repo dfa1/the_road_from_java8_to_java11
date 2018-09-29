@@ -17,7 +17,7 @@ of new Java classes and idioms.
 
 === Principles
 
-* main focus is on the language level changes, second focus on deploy/production
+* main focus is on the language level changes, secondary focus on deploy/production
 * use standard library as much as possible
 * use JShell as much as possible
 * provide links to release notes, JEPS and bug reports
@@ -78,20 +78,70 @@ Using apache maven would be:
 
 This is a very good reference: https://stackoverflow.com/questions/48204141/replacements-for-deprecated-jpms-modules-with-java-ee-apis/48204154#48204154
 
+=== Launch Single-File Source-Code Programs
+
+http://openjdk.java.net/jeps/330
+
+----
+dfa@aman:~ $ vim aa.java
+dfa@aman:~ $ cat aa.java
+public class Test {
+	public static void main(String[] args) {
+		System.out.println("hello world!");
+	}
+}
+dfa@aman:~ $ java aa.java
+hello world!
+----
+
 ===  java.net.http
 
 http://openjdk.java.net/groups/net/httpclient/intro.html
 
-Introduced in Java9, and promoted from incubator in Java11.
-.TODO: examples
+Introduced in Java9, and promoted from incubator in Java11. This is a somewhat big API and imho it is
+a huge step from `java.net.URLConnection`.
+
+Let's start with an example with `httpbin`:
+
+----
+dfa@aman:~ $ docker run --rm -p 80:80 kennethreitz/httpbin
+[2018-09-29 10:04:20 +0000] [1] [INFO] Starting gunicorn 19.9.0
+[2018-09-29 10:04:20 +0000] [1] [INFO] Listening at: http://0.0.0.0:80 (1)
+[2018-09-29 10:04:20 +0000] [1] [INFO] Using worker: gevent
+[2018-09-29 10:04:20 +0000] [9] [INFO] Booting worker with pid: 9
+----
+
+this container exposes well-known resources https://www.kennethreitz.org/essays/httpbin
+
+----
+dfa@aman:~ $ curl localhost/user-agent
+{
+  "user-agent": "curl/7.54.0"
+}
+----
+
+Let's write a simple HTTP2 client:
+
+----
+include::snippets/java11_http_client.java[]
+----
+
+and let's start it using JEP 330:
+
+----
+dfa@aman:~ $ java java11_http_client.java
+{
+  "user-agent": "Java-http-client/11"
+}
+----
 
 === Security
 
 This version includes several new important and modern crypto features:
 
-* TLS 1.3, see https://bugs.openjdk.java.net/browse/JDK-8202625;
-* ChaCha20 & Poly1305 crypto algorithms;
-* Key Agreement with Curve25519 and Curve448.
+* TLS 1.3, see https://bugs.openjdk.java.net/browse/JDK-8202625
+* ChaCha20 & Poly1305 crypto algorithms
+* Key Agreement with Curve25519 and Curve448
 
 === var in lambda
 
@@ -268,21 +318,6 @@ because the definition is:
 
 ----
 static Path	of(String first, String... more)
-----
-=== Launch Single-File Source-Code Programs
-
-http://openjdk.java.net/jeps/330
-
-----
-dfa@aman:~ $ vim aa.java
-dfa@aman:~ $ cat aa.java
-public class Test {
-	public static void main(String[] args) {
-		System.out.println("hello world!");
-	}
-}
-dfa@aman:~ $ java aa.java
-hello world!
 ----
 
 === Unicode
