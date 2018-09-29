@@ -178,7 +178,7 @@ jshell> "test".repeat(3)
 $7 ==> "testtesttest"
 ----
 
-[NOTE] check bondaries (-1, MAX_VALUE)
+[NOTE] check boundaries (-1, MAX_VALUE)
 
 
 === `String.isBlank()`
@@ -211,7 +211,7 @@ $4 ==> "　"
 https://bugs.openjdk.java.net/browse/JDK-8200378
 
 While almost the same as `trim()`/`trimLeft()`/`trimRight(), this takes full-width spaces as a
-space (0x20 ascii character). This new method is Unicode-aware, by using `Character.isWhitespace()`.
+space (0x20 ASCII character). This new method is Unicode-aware, by using `Character.isWhitespace()`.
 [source,java]
 ----
 jshell> var halfSpace = "\u0020"
@@ -247,7 +247,7 @@ it is very convenient to use `java.nio.charset.StandardCharsets`, https://docs.o
 
 === `java.nio.Path`
 
-This is a very nice shorcut to build paths:
+This is a very nice shortcut to build paths:
 
 ----
 jshell> Path.of("dir", "subdir", "file")
@@ -341,7 +341,7 @@ a.m();
 
 === Docker awareness
 
-JVM now can detect cpu/memory settings when run inside a container.
+JVM now can detect CPU/memory settings when run inside a container.
 
 TODO: example
 
@@ -415,7 +415,7 @@ Map<String, Integer> mapLonger = Map.ofEntries(Map.entry("key1", 1), Map.entry("
 ----
 
 .Immutability vs views
-NOTE: `Collections.unmodificable` are just read-only wrappers around original data structure: if the original datastructure is mutable, you can still see changes in the wrapper.
+NOTE: `Collections.unmodificable` are just read-only wrappers around original data structure: if the original data structure is mutable, you can still see changes in the wrapper.
 
 ----
 jshell> var list = new ArrayList<>()
@@ -459,7 +459,7 @@ $7 ==> true
 ----
 
 .Gotcha:
-NOTE: cannot use `Set.of` to filter aways duplicated.
+NOTE: cannot use `Set.of` to filter away duplicated.
 
 [source,java]
 ----
@@ -585,7 +585,7 @@ This is a trivial source-level incompatibility to fix.
 
 http://openjdk.java.net/jeps/223
 
-In legacy codebases it is possible to find various ways to determine which java
+In legacy code bases it is possible to find various ways to determine which java
 version is running:
 
 [source,java]
@@ -708,7 +708,7 @@ The big deliver for Java8 is:
 - Project Lambda http://openjdk.java.net/projects/lambda/
 - ThreeTen http://openjdk.java.net/projects/threeten/
 
-Neverthless the are hidden gem in this release that simplifies a lot certain tasks.
+Nevertheless the are hidden gem in this release that simplifies a lot certain tasks.
 
 === `java.io.UncheckedIOException`
 
