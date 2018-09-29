@@ -836,12 +836,13 @@ In practice, the internal representation of string has been changed from `char[]
 The purpose of the flag is to store which encoding to use:
 `ISO-8859-1/Latin-1` (one byte per character) or `UTF-16` (two bytes per character).
 
-== Upgrade to Java8
+== Appendix: upgrade to Java8
 
-The big deliver for Java8 is:
+Since some project are stuck in Java7 let's quickly cover JDK8.
+The main project were:
 
-- Project Lambda https://openjdk.java.net/projects/lambda/
-- ThreeTen https://openjdk.java.net/projects/threeten/
+- Project Lambda (lambda and streams)  https://openjdk.java.net/projects/lambda/
+- ThreeTen (new date/time library) https://openjdk.java.net/projects/threeten/
 
 Nevertheless the are hidden gem in this release that simplifies a lot certain tasks.
 
@@ -849,4 +850,34 @@ Nevertheless the are hidden gem in this release that simplifies a lot certain ta
 
 This is a little know class that wraps an `IOException` with an unchecked exception.
 
+=== `StampedLocks`
 
+A fast alternative to `ReadWriteLock`, that has an "optimistic" mode.
+
+=== Concurrent Adders
+
+A `LongAdder` could be a great alternative to `AtomicLong` for high contention use cases.
+
+=== Strong algorithm for `SecureRandom`
+
+https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html#getInstanceStrong--[A new API] has been added:
+
+----
+public static SecureRandom getInstanceStrong()
+                                      throws NoSuchAlgorithmException
+----
+
+=== Overflow free operations
+
+A great addition is a set of new methods to perform basic math operation, throwing exceptions when
+overflow are detected:
+
+----
+long a = Integer.MAX_VALUE * 2; <1>
+long b = Math.multiplyExact(Integer.MAX_VALUE, 2) <2>
+|  Exception java.lang.ArithmeticException: integer overflow
+|        at Math.multiplyExact (Math.java:906)
+|        at (#2:1)
+----
+<1> silent error: the result is -2, that is spectacularly wrong
+<2> loudy error
