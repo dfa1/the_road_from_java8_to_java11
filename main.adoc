@@ -267,9 +267,9 @@ $4 ==> "　"
 
 https://bugs.openjdk.java.net/browse/JDK-8200378
 
-While almost the same as `trim()`/`trimLeft()`/`trimRight(), this takes full-width spaces as a
+While almost the same as `trim()`/`trimLeft()`/`trimRight()`, this takes full-width spaces as a
 space (0x20 ASCII character). This new method is Unicode-aware, by using `Character.isWhitespace()`.
-[source,java]
+
 ----
 jshell> var halfSpace = "\u0020"
 halfSpace ==> " "
@@ -278,11 +278,29 @@ jshell> halfSpace.trim()
 $2 ==> ""
 
 jshell> var fullSpace = "\u3000"
-jshell> fullSpace.trim()
-$4 ==> ""
-----
+$3 ==> " "
 
-TODO: cover also stripLeading()/stripTrailing()
+jshell> fullSpace.trim()
+$4 ==> " " <1>
+
+jshell> fullSpace.strip()
+$5 ==> "" <2>
+----
+<1> not working as expected
+<2> working as expected
+
+Furthermore let's cover quickly `stripLeading()`/`stripTrailing()`:
+
+----
+jshell> var text = fullSpace + "foo bar" + fullSpace
+text ==> "　foo bar　"
+
+jshell> text.stripTrailing()
+$7 ==> "　foo bar"
+
+jshell> text.stripLeading()
+$8 ==> "foo bar　"
+----
 
 === Null objects for Reader/Writer and InputStream/OutputStream
 
