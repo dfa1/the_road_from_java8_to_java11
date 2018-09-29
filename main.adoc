@@ -135,17 +135,16 @@ dfa@aman:~ $ java java11_http_client.java http://localhost/user-agent
 }
 ----
 
-as expected.
-
 Let's try simulating a busy web server, that delays each requests by 5 seconds:
 
 ----
 dfa@aman:~ $ java java11_http_client.java http://localhost/delay/5
-Exception in thread "main" java.net.http.HttpTimeoutException: request timed out
+Exception in thread "main" java.net.http.HttpTimeoutException: request timed out <1>
 	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:559)
 	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:119)
 	at HttpClientDemo.main(java11_http_client.java:19)
 ----
+<1> as expected a timed out is triggered client side
 
 
 === Security
@@ -515,15 +514,17 @@ $8 ==> 11429
 
 == Upgrade to Java9
 
-Java9 delivers an impressive list of features (http://openjdk.java.net/projects/jdk9/).
+Java9 delivers an impressive set of features, by far the most important are:
 
-Two of the most important are:
-- Project Jigsaw http://openjdk.java.net/projects/jigsaw/
-- Jshell http://openjdk.java.net/jeps/222
-- new HTTP client http://openjdk.java.net/jeps/110 as incubating module
+- Project Jigsaw aka modules http://openjdk.java.net/projects/jigsaw/
+- JShell http://openjdk.java.net/jeps/222
+- incubating new HTTP API https://openjdk.java.net/jeps/110
 
-Describing any of these items is beyond the scope of this document, especially Project Jigsaw (modules).
+Describing any of these items is beyond the scope of this document.
 By the way it is important to say that  __you don’t need modules to run on Java 9__.
+
+For the complete list of features is available at http://openjdk.java.net/projects/jdk9/
+but let's dig some important API changes.
 
 === Immutable collections
 
