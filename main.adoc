@@ -792,8 +792,9 @@ public void bar() {
 
 https://openjdk.java.net/jeps/158
 
-This is invaluable in debugging problems in production or during a big acceptance test.
-Now it is possible to capture and log interesting events happening inside the JVM.
+This is invaluable in debugging problems in production problems,by
+by capture and log interesting events happening inside the JVM.
+
 For example it is possible to include every tag around gc:
 
 ----
