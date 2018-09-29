@@ -1,6 +1,11 @@
 image: ruby:2.5.0
 
 pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - ./build.sh
   tags:
     v*:
       - step:
