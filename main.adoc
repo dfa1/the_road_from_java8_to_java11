@@ -693,27 +693,19 @@ StackWalker
 its own stack.
 Additionally a security check is performed on creation of the `StackWalker` instance, no further checks are performed later.
 
-=== `@SafeVarags` on private methods
+=== Milling Project Coin
 
-Part of JEP 213 https://openjdk.java.net/jeps/213.
+https://openjdk.java.net/jeps/213
 
-https://bugs.openjdk.java.net/browse/JDK-7196160
+The small language changes included in Project Coin were low hanging fruits but was quite successfull.
+JDK9 introduces the following small changes:
 
-Now it is possible to use `@SafeVarargs` also for private methods.
+- `@SafeVarags` on private methods, https://bugs.openjdk.java.net/browse/JDK-7196160
+- `private` methods in interfaces
+- allow final or effectively final variables to be used as resources in try-with-resources https://bugs.openjdk.java.net/browse/JDK-7196163
+- `_` identifier now is reserved
 
-.TODO: example
-
-=== `private` methods in interfaces
-
-Part of JEP 213 https://openjdk.java.net/jeps/213.
-
-.TODO: example
-
-=== `_` identifier
-
-Part of JEP 213 https://openjdk.java.net/jeps/213.
-
-Now it is forbidden to use `_` as identifier.
+Let's quickly dig the last point since it is a trivial source-level incompatibility to fix:
 
 ----
 jshell> Predicate<Integer> pred = _ -> false;
@@ -723,8 +715,6 @@ jshell> Predicate<Integer> pred = _ -> false;
 |  Predicate<Integer> pred = _ -> false;
 |                            ^
 ----
-
-This is a trivial source-level incompatibility to fix.
 
 === Version
 
