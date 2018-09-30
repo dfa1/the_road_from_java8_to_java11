@@ -238,13 +238,35 @@ Repeat String for the specified number of times:
 
 [source,java]
 ----
-jshell> "test".repeat(3)
-$7 ==> "testtesttest"
-----
+jshell> "ab".repeat(5) <1>
+$1 ==> "ababababab"
 
-[NOTE] check boundaries (-1, MAX_VALUE)
+jshell> "ab".repeat(1) <2>
+$2 ==> "ab"
+
+jshell> "ab".repeat(0) <3>
+$3 ==> ""
+
+jshell> "ab".repeat(-1) <4>
+|  Exception java.lang.IllegalArgumentException: count is negative: -1
+|        at String.repeat (String.java:3149)
+|        at (#1:1)
+
+jshell> "ab".repeat(Integer.MAX_VALUE) <5>
+|  Exception java.lang.OutOfMemoryError: Repeating 4 bytes String 2147483647 times will produce a String exceeding maximum size.
+|        at String.repeat (String.java:3164)
+|        at (#2:1)
+
+----
+<1> n=5 as expected result is `"ab"` repeated five times
+<2> corner case `n=1`, result is `"ab"`
+<3> corner case `n=0`, result is empty `""`
+<4> error, since `n<0`
+<5> error fail fast method to avoid allocating big chunks of memory
 
 === `String.isBlank()`
+
+https://bugs.openjdk.java.net/browse/JDK-8200437
 
 This is correct but too technical, and perhaps the intent is not clear:
 
@@ -253,21 +275,21 @@ This is correct but too technical, and perhaps the intent is not clear:
 boolean blank = string.codePoints().allMatch(Character::isWhitespace);
 ----
 
-https://bugs.openjdk.java.net/browse/JDK-8200437
+In this version of JDK it is possible to just use `String.isBlank`:
 
 [source,java]
 ----
 jshell> var halfSpace = "\u0020"
 halfSpace ==> " "
 
-jshell> halfSpace.trim()
-$2 ==> ""
-
 jshell> var fullSpace = "\u3000"
 fullSpace ==> "　"
 
-jshell> fullSpace.trim()
-$4 ==> "　"
+jshell> halfSpace.repeat(10).isBlank()
+$1 ==> true
+
+jshell> fullSpace.repeat(10).isBlank()
+$2 ==> true
 ----
 
 === `String.strip()`
