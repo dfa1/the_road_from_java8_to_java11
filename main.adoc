@@ -82,6 +82,7 @@ This is a very good reference: https://stackoverflow.com/questions/48204141/repl
 
 https://openjdk.java.net/jeps/330
 
+[source]
 ----
 dfa@aman:~ $ vim aa.java
 dfa@aman:~ $ cat aa.java
@@ -180,9 +181,9 @@ In addition of `Optional.isPresent` now it is possible to use `Optional.isEmpty`
 
 [source,java]
 ----
-Optional<String> arg = ...;
-if (arg.isEmpty()) {
-	logger.warn("arg is empty, defaulting to 'foo'");
+Optional<String> featureToggle = ...;
+if (featureToggle.isEmpty()) {
+	logger.warn("feature 'xxx' disabled");
 }
 ----
 
@@ -190,6 +191,7 @@ if (arg.isEmpty()) {
 
 Improved error message with index and current size of the array:
 
+[source,java]
 ----
 jshell> int[] a = {1}
 a ==> int[1] { 1 }
@@ -201,6 +203,7 @@ jshell> a[4]
 
 In previous Java versions we have a much more cryptic message:
 
+[source,java]
 ----
 jshell> int[] a ={1}
 a ==> int[1] { 1 }
@@ -223,6 +226,7 @@ include::snippets/character_toString.jsh[]
 
 Sometimes this is very convenient: get a stream divided by line breaks:
 
+[source,java]
 ----
 jshell> "a\nb\nc\n".lines().toUpperCase().toArray()
 $1 ==> Object[2] { "A", "B", "C }
@@ -232,13 +236,13 @@ $1 ==> Object[2] { "A", "B", "C }
 
 Repeat String for the specified number of times:
 
+[source,java]
 ----
 jshell> "test".repeat(3)
 $7 ==> "testtesttest"
 ----
 
 [NOTE] check boundaries (-1, MAX_VALUE)
-
 
 === `String.isBlank()`
 
@@ -251,6 +255,7 @@ boolean blank = string.codePoints().allMatch(Character::isWhitespace);
 
 https://bugs.openjdk.java.net/browse/JDK-8200437
 
+[source,java]
 ----
 jshell> var halfSpace = "\u0020"
 halfSpace ==> " "
@@ -272,6 +277,7 @@ https://bugs.openjdk.java.net/browse/JDK-8200378
 While almost the same as `trim()`/`trimLeft()`/`trimRight()`, this takes full-width spaces as a
 space (0x20 ASCII character). This new method is Unicode-aware, by using `Character.isWhitespace()`.
 
+[source,java]
 ----
 jshell> var halfSpace = "\u0020"
 halfSpace ==> " "
@@ -293,6 +299,7 @@ $5 ==> "" <2>
 
 Furthermore let's cover quickly `stripLeading()`/`stripTrailing()`:
 
+[source,java]
 ----
 jshell> var text = fullSpace + "foo bar" + fullSpace
 text ==> "　foo bar　"
@@ -326,6 +333,7 @@ it is very convenient to use `java.nio.charset.StandardCharsets`, https://docs.o
 
 This is a very nice shortcut to build paths:
 
+[source,java]
 ----
 jshell> Path.of("dir", "subdir", "file")
 $2 ==> dir/subdir/file
@@ -334,6 +342,7 @@ $2 ==> dir/subdir/file
 Returns a `Path` by converting a path string, or a sequence of strings that when joined form
 a path string. Please note that this API is following the _Item 42_ of _Effective Java_:
 
+[source,java]
 ----
 jshell> Path.of()
 |  Error:
@@ -348,7 +357,7 @@ jshell> Path.of()
 
 because the definition is:
 
-[source]
+[source,java]
 ----
 static Path	of(String first, String... more)
 ----
@@ -555,12 +564,12 @@ b ==> hello world
 
 This new method returns the process ID representing the running JVM:
 
+[source,java]
 ----
 jshell> import java.lang.management.*;
 
 jshell> ManagementFactory.getRuntimeMXBean().getPid()
 $8 ==> 11429
-
 ----
 
 == Upgrade to Java9
@@ -584,7 +593,7 @@ https://openjdk.java.net/jeps/269
 JEP 269 introduced some new factory methods for collections.
 New APIs are:
 
-[source]
+[source,java]
 ----
 Set<Integer> set = Set.of(1,2,3,4);
 List<Integer> list = List.of(1,2,1,2);
@@ -595,6 +604,7 @@ Map<String, Integer> mapLonger = Map.ofEntries(Map.entry("key1", 1), Map.entry("
 .Immutability vs views
 NOTE: `Collections.unmodificable` are just read-only wrappers around original data structure: if the original data structure is mutable, you can still see changes in the wrapper.
 
+[source,java]
 ----
 jshell> var list = new ArrayList<>()
 list ==> []
@@ -612,6 +622,7 @@ unmodificableList ==> [1]
 
 By using these new methods you get immutable data structures:
 
+[source,java]
 ----
 jshell> var immutableList = List.of();
 immutableList ==> []
@@ -626,6 +637,7 @@ jshell> immutableList.add(1)
 .Gotcha:
 NOTE: sometimes `List.copyOf` is a no-op
 
+[source,java]
 ----
 jshell> List<?> a = List.of(1,2,3)
 a ==> [1, 2, 3]
@@ -743,6 +755,7 @@ JDK9 introduces the following small changes:
 
 Let's quickly dig the last point since it is a trivial source-level incompatibility to fix:
 
+[source,java]
 ----
 jshell> Predicate<Integer> pred = _ -> false;
 |  Error:
@@ -870,7 +883,9 @@ will be changed.
 
 In practice, the internal representation of string has been changed from `char[]` to `byte[]` + flag.
 The purpose of the flag is to store which encoding to use:
-`ISO-8859-1/Latin-1` (one byte per character) or `UTF-16` (two bytes per character).
+
+- `ISO-8859-1/Latin-1` (one byte per character)
+- `UTF-16` (two bytes per character).
 
 == Appendix: Upgrade to Java8
 
