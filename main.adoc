@@ -365,6 +365,14 @@ This release includes combined support for both _Unicode 9.0_ as well as _Unicod
 By now it is possible to use Bitcoin, since the Bitcoin sign is part of _Unicode 10.0_
 (released June 2017) with code point `U+20BF`.
 
+=== Dynamic Class-File Constants
+
+https://openjdk.java.net/jeps/309
+
+This is mostly for compilers that target the JVM however it could have interesting ripples in the
+whole ecosystem, as `invokedynamic` did.
+
+
 == Upgrade to Java10
 
 This is the big new feature of Java 10, introduced by https://openjdk.java.net/jeps/286
