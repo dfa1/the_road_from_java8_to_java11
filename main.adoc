@@ -13,9 +13,6 @@ As Java developers we will very busy upgrading our code bases to newest Java rel
 This will be a slow process, especially regarding the upgrade from classpath to the module
 path.
 
-It is important to document, with well written examples, how to take advantage
-of new Java classes and idioms.
-
 === Principles
 
 * main focus is on the language level changes, secondary focus on deploy/production
@@ -25,7 +22,7 @@ of new Java classes and idioms.
 
 ==== Author
 
-- {firstname} {lastname} <{email}>, check also {homepage}
+- {firstname} {lastname} {homepage}
 
 ==== Contributors
 
@@ -42,7 +39,7 @@ Java11 is the new LTS version, check https://jdk.java.net/11/release-notes for o
 
 The big feature are:
 
-* new java.net.http module
+* stable `java.net.http` module
 * TLS 1.3
 * removal of Corba and Java EE
 * removal of Web Start, with no clear replacement
