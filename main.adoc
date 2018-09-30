@@ -5,6 +5,7 @@ Davide Angelocola <davide.angelocola+java11@gmail.com>
 :doctype: book
 :creator: {author}
 :homepage: https://dfa.bitbucket.io
+:source-highlighter: coderay
 
 == Introduction
 
@@ -63,6 +64,8 @@ to Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/
 JAXB is not provided by the JDK anymore so it is required to provide an external dependency for it.
 Using apache maven would be:
 
+
+[source,xml]
 ----
 <dependency>
 	<groupId>javax.xml.bind</groupId>
@@ -122,6 +125,7 @@ dfa@aman:~ $ curl localhost/user-agent
 
 Let's write a simple HTTP2 client:
 
+[source,java]
 ----
 include::snippets/java11_http_client.java[]
 ----
@@ -159,12 +163,14 @@ This version includes several new important and modern crypto features:
 
 https://openjdk.java.net/jeps/323
 
+[source,java]
 ----
 (var x, var y) -> x.process(y)
 ----
 
 now it is equivalent to:
 
+[source,java]
 ----
 (x, y) -> x.process(y)
 ----
@@ -175,6 +181,7 @@ The primary advantage is that now it is possible to annotate parameters, e.g. fo
 
 In addition of `Optional.isPresent` now it is possible to use `Optional.isEmpty`:
 
+[source,java]
 ----
 Optional<String> arg = ...;
 if (arg.isEmpty()) {
@@ -219,7 +226,6 @@ include::snippets/character_toString.jsh[]
 
 Sometimes this is very convenient: get a stream divided by line breaks:
 
-[source,java]
 ----
 jshell> "a\nb\nc\n".lines().toUpperCase().toArray()
 $1 ==> Object[2] { "A", "B", "C }
@@ -229,7 +235,6 @@ $1 ==> Object[2] { "A", "B", "C }
 
 Repeat String for the specified number of times:
 
-[source,java]
 ----
 jshell> "test".repeat(3)
 $7 ==> "testtesttest"
@@ -242,13 +247,13 @@ $7 ==> "testtesttest"
 
 This is correct but too technical, and perhaps the intent is not clear:
 
+[source,java]
 ----
 boolean blank = string.codePoints().allMatch(Character::isWhitespace);
 ----
 
 https://bugs.openjdk.java.net/browse/JDK-8200437
 
-[source,java]
 ----
 jshell> var halfSpace = "\u0020"
 halfSpace ==> " "
@@ -346,6 +351,7 @@ jshell> Path.of()
 
 because the definition is:
 
+[source]
 ----
 static Path	of(String first, String... more)
 ----
@@ -381,7 +387,8 @@ There are also other important features:
 include::snippets/java10_var.jsh[]
 ----
 
-It is important to know that var is not a keyword, it is a special type. In this way you can continue to use var as variable name or method name.
+It is important to know that var is not a keyword, it is a special type: in this way you can continue
+to use var as variable name or method name.
 
 Now it is possible to express things not possible before, use wisely:
 
@@ -492,6 +499,7 @@ https://bugs.openjdk.java.net/browse/JDK-8173425
 In order to be precise and avoid ambiguities around the special handling of the first sentence of javadoc,
 it is possible to use `@summary`:
 
+[source,java]
 ----
 {@summary This is the first sentence.} This is the second sentence.
 ----
@@ -501,7 +509,7 @@ it is possible to use `@summary`:
 
 This is a long awaited feature, usually provided by external libraries such as Apache IOUtils.
 
-[source, java]
+[source,java]
 ----
 jshell> import java.io.*
 
@@ -551,7 +559,7 @@ https://openjdk.java.net/jeps/269
 JEP 269 introduced some new factory methods for collections.
 New APIs are:
 
-[source,java]
+[source]
 ----
 Set<Integer> set = Set.of(1,2,3,4);
 List<Integer> list = List.of(1,2,1,2);
@@ -569,12 +577,13 @@ list ==> []
 jshell> var unmodificableList = Collections.unmodifiableList(list)
 unmodificableList ==> []
 
-jshell> list.add(1)
+jshell> list.add(1) <1>
 $3 ==> true
 
-jshell> unmodificableList
+jshell> unmodificableList <1>
 unmodificableList ==> [1]
 ----
+<1> changes to `unmodificableList` are still possible
 
 By using these new methods you get immutable data structures:
 
@@ -667,6 +676,7 @@ https://bugs.openjdk.java.net/browse/JDK-8071597
 
 Another nice addiction to the Stream API:
 
+[source,java]
 ----
 IntStream
   .iterate(1, n -> n + 1)
@@ -683,6 +693,7 @@ in a very simple and effective way.
 
 For example getting the caller it is trivial now:
 
+[source,java]
 ----
 StackWalker
 	.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE)
@@ -774,14 +785,13 @@ https://openjdk.java.net/jeps/277
 
 It is possible to mark a method/class for removal (`forRemoval`) and when the deprecation started (`since`):
 
+[source,java]
 ----
 @Deprecate(forRemoval=true)
 public void foo() {
 
 }
-----
 
-----
 @Deprecate(since="1.0")
 public void bar() {
 
@@ -863,6 +873,7 @@ A `LongAdder` could be a great alternative to `AtomicLong` for high contention u
 
 https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html#getInstanceStrong--[A new API] has been added:
 
+[source,java]
 ----
 public static SecureRandom getInstanceStrong()
                                       throws NoSuchAlgorithmException
