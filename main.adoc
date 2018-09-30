@@ -50,7 +50,7 @@ The big feature are:
 The last point is critical, since now in order to use Oracle JDK11 in production you have to subscribe
 to Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/overview/javasesubscriptionfaq-4891443.html.
 
-However, there is a free, zero-cost, alterative: https://jdk.java.net/11/[OpenJDK binaries] or https://hub.docker.com/_/openjdk/[docker images]. Checkout also the https://adoptopenjdk.net/index.html[adoptopenjdk] project, that provides prebuilt JDK binaries as well as https://hub.docker.com/u/adoptopenjdk[docker images].
+However, there are free, zero-cost, alteratives: https://jdk.java.net/11/[OpenJDK binaries] with related https://hub.docker.com/_/openjdk/[docker images]. Checkout also the https://adoptopenjdk.net/index.html[adoptopenjdk] project, that provides prebuilt JDK binaries as well as https://hub.docker.com/u/adoptopenjdk[docker images].
 https://blog.joda.org/[Stephen Colebourne] has written quite
 a lot https://blog.joda.org/2018/09/do-not-fall-into-oracles-java-11-trap.html[about these topics].
 
@@ -64,7 +64,6 @@ a lot https://blog.joda.org/2018/09/do-not-fall-into-oracles-java-11-trap.html[a
 
 JAXB is not provided by the JDK anymore so it is required to provide an external dependency for it.
 Using apache maven would be:
-
 
 [source,xml]
 ----
@@ -236,9 +235,9 @@ jshell> "a\nb\nc\n".lines().toUpperCase().toArray()
 $1 ==> Object[2] { "A", "B", "C }
 ----
 
-=== `String.lines()`
+=== `String.repeat()`
 
-Repeat String for the specified number of times:
+Repeat `String` for the specified number of times:
 
 [source,java]
 ----
