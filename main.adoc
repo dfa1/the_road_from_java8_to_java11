@@ -882,3 +882,20 @@ long b = Math.multiplyExact(Integer.MAX_VALUE, 2) <2>
 ----
 <1> silent error: the result is -2, that is spectacularly wrong
 <2> loudy error
+
+=== `String.join()`
+
+This is a static method on `java.lang.String`:
+
+----
+jshell> String.join(",");
+$10 ==> ""
+
+jshell> String.join(",", "a");
+$11 ==> "a"
+
+jshell> String.join(",", "a", "b");
+$12 ==> "a,b"
+----
+
+There are two overloads: one for vararg array and another one for `Iterable<? extends CharSequence>`.
