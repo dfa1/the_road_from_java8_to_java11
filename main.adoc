@@ -387,10 +387,27 @@ There are also other important features:
 include::snippets/java10_var.jsh[]
 ----
 
-It is important to know that var is not a keyword, it is a special type: in this way you can continue
-to use var as variable name or method name.
+Ofter using var is quite convenient:
 
-Now it is possible to express things not possible before, use wisely:
+[source,java]
+----
+Map<String, Integer> map = Map.of("a", 1, "b", 2); <1>
+for (Map.Entry<String, Integer> entry : map.entrySet()) { <1>
+    System.out.println(entry);
+}
+
+var map2 = Map.copyOf(map); <2>
+for (var entry : map2.entrySet()) { <2>
+    System.out.println(entry);
+}
+----
+<1> `Map<String, Integer>` is spread all over
+<2> much more easy to read
+
+It is important to know that `var` is not a keyword, it is a special type: in this way you can continue
+to use var as variable name or method name (see section "3.9" of _The Java Language Specification, Java SE 11 Edition_).
+
+Now it is possible to express things not possible before:
 
 [source,java]
 ----
@@ -402,9 +419,12 @@ var a = new Object() {
 
 };
 
-a.m();
-
+a.m(); <1>
 ----
+<1> the type of `a` is `Object` + method `m()`
+
+By using `var` wisely it could be possible to make easier to perform large scale refactorings, but
+this idea must be proven. Don't miss the http://openjdk.java.net/projects/amber/LVTIstyle.html[Style Guidelines for Local Variable Type Inference in Java].
 
 === Docker awareness
 
