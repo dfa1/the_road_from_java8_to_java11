@@ -38,7 +38,7 @@ This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0
 
 == Upgrade to Java11
 
-Java11 is the new LTS version, check http://jdk.java.net/11/release-notes for official release notes.
+Java11 is the new LTS version, check https://jdk.java.net/11/release-notes for official release notes.
 
 The big feature are:
 
@@ -432,7 +432,7 @@ a.m(); <1>
 <1> the type of `a` is `Object` + method `m()`
 
 By using `var` wisely it could be possible to make easier to perform large scale refactorings, but
-this idea must be proven. Don't miss the http://openjdk.java.net/projects/amber/LVTIstyle.html[Style Guidelines for Local Variable Type Inference in Java].
+this idea must be proven. Don't miss the https://openjdk.java.net/projects/amber/LVTIstyle.html[Style Guidelines for Local Variable Type Inference in Java].
 
 === Docker awareness
 
@@ -875,7 +875,7 @@ In practice, the internal representation of string has been changed from `char[]
 The purpose of the flag is to store which encoding to use:
 `ISO-8859-1/Latin-1` (one byte per character) or `UTF-16` (two bytes per character).
 
-== Appendix: upgrade to Java8
+== Appendix: Upgrade to Java8
 
 Since some project are stuck in Java7 let's quickly cover JDK8.
 The main project were:
