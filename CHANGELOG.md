@@ -5,10 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+# [0.6.0] - 2018-10-01
 - improved intro
 - improved new HTTP API
 - improved JEP 330 coverage
 - added CharSequence.compare()
+- build HTML
 
 # [0.5.1] - 2018-09-30
 - mentioned AdoptOpenJDK
