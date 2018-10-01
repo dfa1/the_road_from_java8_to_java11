@@ -12,9 +12,8 @@
 
 ### Sources
 
+* https://blog.joda.org
 * https://openjdk.java.net/jeps/0
-* https://dzone.com/articles/api-updates-in-java-se-11-189
-* https://www.baeldung.com/new-java-9
 
 ### Contribution guidelines ###
 
