@@ -34,9 +34,10 @@ This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0
 
 == Upgrade to Java11
 
-Java11 is the new LTS version, check https://jdk.java.net/11/release-notes for official release notes.
+Java11 is the new LTS (Long Term Support), so it is über-important to upgrade as soon as possible to this
+version of Java. More details on the LTS releases can be found at https://blog.joda.org/2018/08/java-is-still-available-at-zero-cost.html.
 
-The big feature are:
+The main feature are:
 
 * stable `java.net.http` module
 * TLS 1.3
@@ -44,6 +45,7 @@ The big feature are:
 * removal of Web Start, with no clear replacement
 * removal of Java applets
 * removal of JavaFX: the FX libraries have moved to the OpenJFX project
+* official relese notes: https://jdk.java.net/11/release-notes
 
 == Which JDK?
 
