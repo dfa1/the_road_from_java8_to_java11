@@ -6,11 +6,11 @@ pipelines:
       - step:
           script:
             - export FILE="ignore.pdf"
-            - ./build.sh $FILE
+            - ./build-pdf.sh $FILE
   tags:
     v*:
       - step:
           script:
             - export FILE="the_road_from_java8_to_java11-${BITBUCKET_TAG}.pdf"
-            - ./build.sh $FILE
+            - ./build-pdf.sh $FILE
             - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"$FILE"
