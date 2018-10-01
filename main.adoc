@@ -973,13 +973,13 @@ The purpose of the flag is to store which encoding to use:
 
 == Appendix: Upgrade to Java8
 
-Since some project are stuck in Java7 let's quickly cover JDK8.
-The main project were:
+Since some projects and products are stuck in Java7 let's quickly cover JDK8.
+The main features were:
 
-- Project Lambda (lambda and streams)  https://openjdk.java.net/projects/lambda/
+- Project Lambda (lambda and streams) https://openjdk.java.net/projects/lambda/
 - ThreeTen (new date/time library) https://openjdk.java.net/projects/threeten/
 
-Nevertheless the are hidden gem in this release that simplifies a lot certain tasks.
+Nevertheless there are hidden gems in this release, that often are ignored.
 
 === `java.io.UncheckedIOException`
 
