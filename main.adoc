@@ -343,7 +343,7 @@ $8 ==> "foo bar　"
 
 === Null objects for Reader/Writer and InputStream/OutputStream
 
-https://download.java.net/java/early_access/jdk11/docs/api/java.base/java/io/Reader.html#nullReader()
+https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader()
 
 * `Reader.nullReader()`
 * `Writer.nullWriter()`
