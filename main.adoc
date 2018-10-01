@@ -21,16 +21,16 @@ The main ideas are:
 * use JShell as much as possible
 * provide links to release notes, JEPS and bug reports
 
-==== Author
+=== Author
 
 - {firstname} {lastname} {homepage}
 
-==== Contributors
+=== Contributors
 
 - Karrie Moore
 - Alessandro Sebastiani
 
-==== License
+=== License
 
 This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License].
 
