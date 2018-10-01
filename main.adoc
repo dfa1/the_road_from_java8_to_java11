@@ -87,20 +87,39 @@ This is a very good reference: https://stackoverflow.com/questions/48204141/repl
 
 https://openjdk.java.net/jeps/330
 
-Now it is possible to edit and run a single-file Java program with much less ceremony:
 
 [source]
 ----
-dfa@aman:~ $ vim aa.java
-dfa@aman:~ $ cat aa.java
-public class Test {
+dfa@aman:~ $ vim Hello.java
+dfa@aman:~ $ cat Hello.java <1>
+public class Hello { <1>
 	public static void main(String[] args) {
 		System.out.println("hello world!");
 	}
 }
-dfa@aman:~ $ java aa.java
+dfa@aman:~ $ javac Hello.java <2>
+dfa@aman:~ $ java Hello <2>
 hello world!
 ----
+<1> class name and file name must be match
+<2> two separate steps: compile and run
+
+Now it is possible to edit and run a single-file Java program with much less ceremony:
+
+[source]
+----
+dfa@aman:~ $ vim demo.java
+dfa@aman:~ $ cat demo.java <1>
+public class Hello { <1>
+	public static void main(String[] args) {
+		System.out.println("hello world!");
+	}
+}
+dfa@aman:~ $ java hello.java <2>
+hello world!
+----
+<1> it is also possible to name file and class differently
+<2> one step to compile and run
 
 === `java.net.http`
 
