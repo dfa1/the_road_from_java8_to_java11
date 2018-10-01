@@ -1,5 +1,5 @@
 = The road from Java8 to Java11
-Davide Angelocola <davide.angelocola+java11@gmail.com>
+Davide Angelocola <davide.angelocola@gmail.com>
 
 :copyright: CC-BY-SA 4.0
 :doctype: book
@@ -12,14 +12,12 @@ Davide Angelocola <davide.angelocola+java11@gmail.com>
 As Java developers we will very busy in the following months upgrading our projects and products to
 newest Java releases. It will be a slow, incremental process, especially regarding the upgrade from classpath
 to the module path and new tooling. This document tries to summarize new features in a very minimalistic
-style.
+style:
 
-The main ideas are:
-
-* main focus is on the language level changes, secondary focus on deploy/production
-* use standard library as much as possible
-* use JShell as much as possible
-* provide links to release notes, JEPS and bug reports
+* focus is on the language level changes, secondarily on deploy/production
+* use standard *Java Class Library* as much as possible
+* use *JShell* as much as possible
+* provide links to release notes, JEPs and bug reports
 
 === Author
 
