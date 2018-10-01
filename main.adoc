@@ -58,13 +58,14 @@ More details can be found https://blog.joda.org/2018/09/time-to-look-beyond-orac
 === Solving migration problems
 
 * https://openjdk.java.net/jeps/320 provide missing JARs
-* removal of `Thread.destroy()` and `Thread.stop(Throwable)` Methods, see https://bugs.openjdk.java.net/browse/JDK-8204243
+* removal of `Thread.destroy()` and `Thread.stop(Throwable)` methods, see https://bugs.openjdk.java.net/browse/JDK-8204243
 * removal of `com.sun.awt.AWTUtilities` Class, see https://bugs.openjdk.java.net/browse/JDK-8200149
-* source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
 * removal of removal of `sun.misc.Unsafe.defineClass`, see https://bugs.openjdk.java.net/browse/JDK-8193033
+* source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
 
-JAXB is not provided by the JDK anymore so it is required to provide an external dependency for it.
-Using apache maven would be:
+Several packages, such as JAXB, are not provided by the JDK anymore so it is required to provide an external dependency for them.
+
+For example using JAXB in an Apache Maven just add:
 
 [source,xml]
 ----
@@ -86,6 +87,8 @@ This is a very good reference: https://stackoverflow.com/questions/48204141/repl
 
 https://openjdk.java.net/jeps/330
 
+Now it is possible to edit and run a single-file Java program with much less ceremony:
+
 [source]
 ----
 dfa@aman:~ $ vim aa.java
@@ -99,11 +102,11 @@ dfa@aman:~ $ java aa.java
 hello world!
 ----
 
-===  java.net.http
+=== `java.net.http`
 
 https://openjdk.java.net/groups/net/httpclient/intro.html
 
-Introduced in Java9, and promoted from incubator in Java11. This is a somewhat big API and imho it is
+Introduced in Java9, and promoted from incubator in Java11. This is a somewhat big API and it is
 a huge step from `java.net.URLConnection`.
 
 Let's start with an example with `httpbin`:
@@ -116,7 +119,8 @@ dfa@aman:~ $ docker run --rm -p 80:80 kennethreitz/httpbin
 [2018-09-29 10:04:20 +0000] [9] [INFO] Booting worker with pid: 9
 ----
 
-this container exposes well-known resources https://www.kennethreitz.org/essays/httpbin
+this container exposes well-known resources, check https://www.kennethreitz.org/essays/httpbin for reference.
+Let's test it with curl:
 
 ----
 dfa@aman:~ $ curl localhost/user-agent
@@ -125,7 +129,7 @@ dfa@aman:~ $ curl localhost/user-agent
 }
 ----
 
-Let's write a simple HTTP2 client:
+Everyhing looks fine, not let's write a simple HTTP2 client using `java.net.http` module:
 
 [source,java]
 ----
@@ -141,7 +145,7 @@ dfa@aman:~ $ java java11_http_client.java http://localhost/user-agent
 }
 ----
 
-Let's try simulating a busy web server, that delays each requests by 5 seconds:
+Let's try simulating a busy web server, that delays each requests by 5 seconds, whereas our client timeouts after 1 second:
 
 ----
 dfa@aman:~ $ java java11_http_client.java http://localhost/delay/5
