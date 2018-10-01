@@ -411,7 +411,12 @@ These objects are very useful during unit testing.
 * `String readString(Path, Charset`): reads all content from a file into a string, decoding from bytes to characters using the specified charset;
 * `Path writeString(Path, CharSequence, Charset, OpenOption[])`: write a `CharSequence` (e.g. `String`, `StringBuilder`) to a file. Characters are encoded into bytes using the specified charset.
 
-it is very convenient to use `java.nio.charset.StandardCharsets`, https://docs.oracle.com/javase/7/docs/api/java/nio/charset/StandardCharsets.html
+It is very convenient to use `java.nio.charset.StandardCharsets` (see https://docs.oracle.com/javase/7/docs/api/java/nio/charset/StandardCharsets.html[javadoc]):
+
+[source,java]
+----
+String content = Files.readString(Path.of("main.adoc"), StandardCharsets.UTF_8)
+----
 
 === `java.nio.Path`
 
@@ -443,7 +448,9 @@ because the definition is:
 
 [source,java]
 ----
-static Path	of(String first, String... more)
+static Path of(String first, String... more) {
+    ...
+}
 ----
 
 === Unicode
