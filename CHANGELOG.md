@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - improved intro
+- improved new HTTP API
 
 # [0.5.1] - 2018-09-30
 - mentioned AdoptOpenJDK
