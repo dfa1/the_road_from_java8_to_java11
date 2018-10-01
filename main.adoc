@@ -341,6 +341,30 @@ jshell> text.stripLeading()
 $8 ==> "foo bar　"
 ----
 
+=== `CharSequence.compare()`
+
+Using this new API it is possible to compare any `CharSequence` implementation:
+
+[source,java]
+----
+jshell> var builder = new StringBuilder("aaa");
+builder ==> aaa
+
+jshell> var buffer = new StringBuffer("aaa");
+buffer ==> aaa
+
+jshell> var string = "aaa";
+string ==> "aaa"
+
+jshell> CharSequence.compare(builder, buffer); <1>
+$1 ==> 0
+
+jshell> CharSequence.compare(string, buffer); <2>
+$2 ==> 0
+----
+<1> comparing a `StringBuilder` with `StringBuffer` yields 0 (they have the same content)
+<1> ditto for comparing a `String` with `StringBuffer`
+
 === Null objects for Reader/Writer and InputStream/OutputStream
 
 https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader()
