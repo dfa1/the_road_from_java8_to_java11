@@ -262,11 +262,11 @@ include::snippets/character_toString.jsh[]
 
 === `String.lines()`
 
-Sometimes this is very convenient: get a stream divided by line breaks:
+Create a `Stream<String>` by lazily splitting string using line separators (e.g. `"\n" "\r" "\r\n"`):
 
 [source,java]
 ----
-jshell> "a\nb\nc\n".lines().toUpperCase().toArray()
+jshell> "a\nb\nc\n".lines().map(String::toUpperCase).toArray()
 $1 ==> Object[2] { "A", "B", "C }
 ----
 
@@ -357,7 +357,7 @@ $5 ==> "" <2>
 <1> not working as expected
 <2> working as expected
 
-Furthermore let's cover quickly `stripLeading()`/`stripTrailing()`:
+Finally let's cover quickly `stripLeading()`/`stripTrailing()`:
 
 [source,java]
 ----
