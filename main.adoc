@@ -175,6 +175,17 @@ Exception in thread "main" java.net.http.HttpTimeoutException: request timed out
 ----
 <1> as expected a timed out is triggered client side
 
+==== `WebSocket` and `WebSocketListener`
+
+This modules supports also web sockets:
+
+[source,java]
+----
+var client = HttpClient.newHttpClient();
+var uri = URI.create(...);
+var listener = ...;
+var ws = client.newWebSocketBuilder().buildAsync(uri, listener);
+----
 
 === Security
 
@@ -382,7 +393,7 @@ jshell> CharSequence.compare(string, buffer); <2>
 $2 ==> 0
 ----
 <1> comparing a `StringBuilder` with `StringBuffer` yields 0 (they have the same content)
-<1> ditto for comparing a `String` with `StringBuffer`
+<2> ditto for comparing a `String` with `StringBuffer`
 
 === Null objects for Reader/Writer and InputStream/OutputStream
 
