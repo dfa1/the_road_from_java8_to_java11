@@ -679,17 +679,17 @@ $8 ==> 11429
 
 == Upgrade to Java9
 
+http://openjdk.java.net/projects/jdk9/
+
 Java9 delivers an impressive set of features, by far the most important are:
 
 - Project Jigsaw aka modules https://openjdk.java.net/projects/jigsaw/
 - JShell https://openjdk.java.net/jeps/222
-- incubating new HTTP API https://openjdk.java.net/jeps/110
 
 Describing any of these items is beyond the scope of this document.
-By the way it is important to say that  __you don’t need modules to run on Java 9__.
 
-For the complete list of features is available at https://openjdk.java.net/projects/jdk9/
-but let's dig some important API changes.
+NOTE: it is important to say that *you don’t need modules to run on Java9*, classpath is
+still supported.
 
 === Immutable collections
 
