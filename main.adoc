@@ -34,6 +34,8 @@ This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0
 
 == Upgrade to Java11
 
+https://jdk.java.net/11/release-notes
+
 Java11 is the new LTS (Long Term Support), so it is über-important to upgrade as soon as possible to this
 version of Java. More details on the LTS releases can be found at https://blog.joda.org/2018/08/java-is-still-available-at-zero-cost.html.
 
@@ -45,9 +47,8 @@ The main feature are:
 * removal of Web Start, with no clear replacement
 * removal of Java applets
 * removal of JavaFX: the FX libraries have moved to the OpenJFX project
-* official relese notes: https://jdk.java.net/11/release-notes
 
-== Which JDK?
+=== Which JDK?
 
 Since https://blog.joda.org/2018/09/do-not-fall-into-oracles-java-11-trap.htmlOracle[JDK11 is a commercial
 product], to use it in production you have to pay Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/overview/javasesubscriptionfaq-4891443.html.
@@ -101,7 +102,7 @@ dfa@aman:~ $ javac Hello.java <2>
 dfa@aman:~ $ java Hello <2>
 hello world!
 ----
-<1> class name and file name must be match
+<1> class name and file name must match
 <2> two separate steps: compile and run
 
 Now it is possible to edit and run a single-file Java program with much less ceremony:
@@ -164,16 +165,16 @@ dfa@aman:~ $ java java11_http_client.java http://localhost/user-agent
 }
 ----
 
-Let's try simulating a busy web server, that delays each requests by 5 seconds, whereas our client timeouts after 1 second:
+Let's try simulating a busy web server, that delays each request by 2 seconds (whereas our client timeouts after 1 second):
 
 ----
-dfa@aman:~ $ java java11_http_client.java http://localhost/delay/5
+dfa@aman:~ $ java java11_http_client.java http://localhost/delay/2
 Exception in thread "main" java.net.http.HttpTimeoutException: request timed out <1>
 	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:559)
 	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:119)
 	at HttpClientDemo.main(java11_http_client.java:19)
 ----
-<1> as expected a timed out is triggered client side
+<1> as expected a timeout is triggered on the client client side
 
 ==== `WebSocket` and `WebSocketListener`
 
@@ -231,7 +232,7 @@ Improved error message with index and current size of the array:
 
 [source,java]
 ----
-jshell> int[] a = {1}
+jshell> int[] a = { 1 }
 a ==> int[1] { 1 }
 
 jshell> a[4]
@@ -239,11 +240,10 @@ jshell> a[4]
 |        at (#2:1)
 ----
 
-In previous Java versions we have a much more cryptic message:
-
+Before this change the message was much more cryptic:
 [source,java]
 ----
-jshell> int[] a ={1}
+jshell> int[] a = { 1 }
 a ==> int[1] { 1 }
 
 jshell> a[4]
