@@ -515,20 +515,30 @@ for (var entry : map2.entrySet()) { <2>
 <2> much more easy to read
 
 It is important to know that `var` is not a keyword, it is a special type: in this way you can continue
-to use var as variable name or method name (see section "3.9" of _The Java Language Specification, Java SE 11 Edition_).
+to use var as variable name or method name (see section "3.9" of _The Java Language Specification, Java SE 11 Edition_):
 
-Now it is possible to express things not possible before:
+[source,java]
+----
+jshell> var var = 1 <1>
+var ==> 1
+
+jshell> class var { } <2>
+|  Error:
+|  'var' not allowed here
+|    as of release 10, 'var' is a restricted local variable type and cannot be used for type declarations
+|  class var { }
+----
+<1> still possible to use `var` as variable name
+<2> not possible anymore to use `var` as `class` or `interface`
+
+NOTE: now it is possible to use anonymous types, this was not possible before:
 
 [source,java]
 ----
 var a = new Object() {
-
    void m() {
-
    }
-
 };
-
 a.m(); <1>
 ----
 <1> the type of `a` is `Object` + method `m()`
