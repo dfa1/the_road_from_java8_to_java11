@@ -392,7 +392,7 @@ $1 ==> 0
 jshell> CharSequence.compare(string, buffer); <2>
 $2 ==> 0
 ----
-<1> comparing a `StringBuilder` with `StringBuffer` yields 0 (they have the same content)
+<1> comparing a `StringBuilder` with `StringBuffer` yields 0
 <2> ditto for comparing a `String` with `StringBuffer`
 
 === Null objects for Reader/Writer and InputStream/OutputStream
@@ -411,11 +411,11 @@ These objects are very useful during unit testing.
 * `String readString(Path, Charset`): reads all content from a file into a string, decoding from bytes to characters using the specified charset;
 * `Path writeString(Path, CharSequence, Charset, OpenOption[])`: write a `CharSequence` (e.g. `String`, `StringBuilder`) to a file. Characters are encoded into bytes using the specified charset.
 
-It is very convenient to use `java.nio.charset.StandardCharsets` (see https://docs.oracle.com/javase/7/docs/api/java/nio/charset/StandardCharsets.html[javadoc]):
+It is very convenient to use `java.nio.charset.StandardCharsets` (introduced in JDK7, see https://docs.oracle.com/javase/7/docs/api/java/nio/charset/StandardCharsets.html[javadoc]):
 
 [source,java]
 ----
-String content = Files.readString(Path.of("main.adoc"), StandardCharsets.UTF_8)
+String content = Files.readString(Path.of("main.adoc"), StandardCharsets.UTF_8);
 ----
 
 === `java.nio.Path`
@@ -459,22 +459,23 @@ https://openjdk.java.net/jeps/327
 
 This release includes combined support for both _Unicode 9.0_ as well as _Unicode 10.0_.
 
-By now it is possible to use Bitcoin, since the Bitcoin sign is part of _Unicode 10.0_
-(released June 2017) with code point `U+20BF`.
+By now it is possible to use the Bitcoin sign (code point `U+20BF`) released on June 2017 as part of  _Unicode 10.0_.
 
 === Dynamic Class-File Constants
 
 https://openjdk.java.net/jeps/309
 
-This is mostly for compilers that target the JVM however it could have interesting ripples in the
+This is mostly for compilers that target the JVM. However it could have interesting ripples in the
 whole ecosystem, as `invokedynamic` did.
 
 
 == Upgrade to Java10
 
-This is the big new feature of Java 10, introduced by https://openjdk.java.net/jeps/286
-There are also other important features:
+http://openjdk.java.net/projects/jdk/10/
 
+Main features:
+
+ * JEP 286 local type inference
  * JEP 304 garbage collector interface
  * JEP 317 experimental java based JIT compiler
  * JEP 307 Parallel full gc for G1
@@ -487,12 +488,16 @@ There are also other important features:
 
 === local type inference
 
+https://openjdk.java.net/jeps/286
+
+This is the big new feature of Java10.
+
 [source,java]
 ----
 include::snippets/java10_var.jsh[]
 ----
 
-Ofter using var is quite convenient:
+Ofter using `var` is quite convenient:
 
 [source,java]
 ----
@@ -532,7 +537,6 @@ By using `var` wisely it could be possible to make easier to perform large scale
 this idea must be proven. Don't miss the https://openjdk.java.net/projects/amber/LVTIstyle.html[Style Guidelines for Local Variable Type Inference in Java].
 
 === Docker awareness
-
 
 JVM now can detect CPU/memory settings when run inside a container. Given a docker setup with 4 CPUs and 2GB of memory:
 
