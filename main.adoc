@@ -53,7 +53,7 @@ The main feature are:
 Since https://blog.joda.org/2018/09/do-not-fall-into-oracles-java-11-trap.htmlOracle[JDK11 is a commercial
 product], to use it in production you have to pay Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/overview/javasesubscriptionfaq-4891443.html.
 
-However, there are free, zero-cost, alteratives: https://jdk.java.net/11/[OpenJDK binaries] with related https://hub.docker.com/_/openjdk/[docker images]. Checkout also the https://adoptopenjdk.net/index.html[adoptopenjdk] project, that provides prebuilt JDK binaries as well as https://hub.docker.com/u/adoptopenjdk[docker images].
+However, there are free, zero-cost, alternatives: https://jdk.java.net/11/[OpenJDK binaries] with related https://hub.docker.com/_/openjdk/[docker images]. Checkout also the https://adoptopenjdk.net/index.html[adoptopenjdk] project, that provides pre-built JDK binaries as well as https://hub.docker.com/u/adoptopenjdk[docker images].
 More details can be found https://blog.joda.org/2018/09/time-to-look-beyond-oracles-jdk.html.
 
 === Solving migration problems
@@ -149,7 +149,7 @@ dfa@aman:~ $ curl localhost/user-agent
 }
 ----
 
-Everyhing looks fine, not let's write a simple HTTP2 client using `java.net.http` module:
+Everything looks fine, not let's write a simple HTTP2 client using `java.net.http` module:
 
 [source,java]
 ----
@@ -497,7 +497,7 @@ This is the big new feature of Java10.
 include::snippets/java10_var.jsh[]
 ----
 
-Ofter using `var` is quite convenient:
+Often using `var` is quite convenient:
 
 [source,java]
 ----
@@ -850,7 +850,7 @@ Additionally a security check is performed on creation of the `StackWalker` inst
 
 https://openjdk.java.net/jeps/213
 
-The small language changes included in Project Coin were low hanging fruits but was quite successfull.
+The small language changes included in Project Coin were low hanging fruits but was quite successful.
 JDK9 introduces the following small changes:
 
 - `@SafeVarags` on private methods, https://bugs.openjdk.java.net/browse/JDK-7196160
@@ -1037,7 +1037,7 @@ long b = Math.multiplyExact(Integer.MAX_VALUE, 2) <2>
 |        at (#2:1)
 ----
 <1> silent error: the result is -2, that is spectacularly wrong
-<2> loudy error
+<2> loud error
 
 === `String.join()`
 
