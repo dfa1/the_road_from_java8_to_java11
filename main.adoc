@@ -564,7 +564,7 @@ $1 ==> 4 <2>
 <2> 4 CPU available
 
 Before this release JVM was not aware of this `--cpus 1`, so this is why JVM sees 4 CPUs.
-Whereas in JDK10:
+Whereas in Java10:
 
 ----
 dfa@aman:~ $ docker container run -it --rm --cpus 1 openjdk:10-jdk-slim <1>
@@ -850,8 +850,8 @@ Additionally a security check is performed on creation of the `StackWalker` inst
 
 https://openjdk.java.net/jeps/213
 
-The small language changes included in Project Coin were low hanging fruits but was quite successful.
-JDK9 introduces the following small changes:
+The small language changes included in Project Coin were low hanging fruits but neverthless the project was
+quite successful. Java9 introduces the following small changes:
 
 - `@SafeVarags` on private methods, https://bugs.openjdk.java.net/browse/JDK-7196160
 - `private` methods in interfaces
