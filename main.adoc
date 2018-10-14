@@ -9,12 +9,13 @@ Davide Angelocola <davide.angelocola@gmail.com>
 
 == Introduction
 
-As Java developers we will very busy in the following months upgrading our projects and products to
-newest Java releases. It will be a slow, incremental process, especially regarding the upgrade from classpath
-to the module path and new tooling. This document tries to summarize new features in a very minimalistic
-style:
+As Java developers, we will busy in the upcoming months, upgrading our projects and products to
+the newest Java releases. It will be a slow, incremental process, especially regarding the migration
+from `classpath` to the `modulepath`.
 
-* focus is on the language level changes, secondarily on deploy/production
+This document tries to summarize new features in a very minimalistic style:
+
+* focus is on the language level changes, secondarily on deploy/production features
 * use standard *Java Class Library* as much as possible
 * use *JShell* as much as possible
 * provide links to release notes, JEPs and bug reports
@@ -37,7 +38,7 @@ This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0
 https://jdk.java.net/11/release-notes
 
 Java11 is the new LTS (Long Term Support), so it is über-important to upgrade as soon as possible to this
-version of Java. More details on the LTS releases can be found at https://blog.joda.org/2018/08/java-is-still-available-at-zero-cost.html.
+version. More details on the LTS releases can be found at https://blog.joda.org/2018/08/java-is-still-available-at-zero-cost.html.
 
 The main feature are:
 
