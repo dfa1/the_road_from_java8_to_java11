@@ -1,4 +1,4 @@
-= The road from Java8 to Java11
+= The road from Java 8 to Java 11
 Davide Angelocola <davide.angelocola@gmail.com>
 
 :copyright: CC-BY-SA 4.0
@@ -33,11 +33,11 @@ This document tries to summarize new features in a very minimalistic style:
 
 This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0/[Creative Commons Attribution-ShareAlike 4.0 International License].
 
-== Upgrade to Java11
+== Upgrade to Java 11
 
 https://jdk.java.net/11/release-notes
 
-Java11 is the new LTS (Long Term Support), so it is über-important to upgrade as soon as possible to this
+Java 11 is the new LTS (Long Term Support), so it is über-important to upgrade as soon as possible to this
 version. More details on the LTS releases can be found at https://blog.joda.org/2018/08/java-is-still-available-at-zero-cost.html.
 
 The main feature are:
@@ -127,7 +127,7 @@ hello world!
 
 https://openjdk.java.net/groups/net/httpclient/intro.html
 
-Introduced in Java9, and promoted from incubator in Java11. This is a somewhat big API and it is
+Introduced in Java 9, and promoted from incubator in Java 11. This is a somewhat big API and it is
 a huge step from `java.net.URLConnection`.
 
 Let's start with an example with `httpbin`:
@@ -470,7 +470,7 @@ This is mostly for compilers that target the JVM. However it could have interest
 whole ecosystem, as `invokedynamic` did.
 
 
-== Upgrade to Java10
+== Upgrade to Java 10
 
 http://openjdk.java.net/projects/jdk/10/
 
@@ -491,7 +491,7 @@ Main features:
 
 https://openjdk.java.net/jeps/286
 
-This is the big new feature of Java10.
+This is the big new feature of Java 10.
 
 [source,java]
 ----
@@ -565,7 +565,7 @@ $1 ==> 4 <2>
 <2> 4 CPU available
 
 Before this release JVM was not aware of this `--cpus 1`, so this is why JVM sees 4 CPUs.
-Whereas in Java10:
+Whereas in Java 10:
 
 ----
 dfa@aman:~ $ docker container run -it --rm --cpus 1 openjdk:10-jdk-slim <1>
@@ -678,18 +678,18 @@ jshell> ManagementFactory.getRuntimeMXBean().getPid()
 $8 ==> 11429
 ----
 
-== Upgrade to Java9
+== Upgrade to Java 9
 
 http://openjdk.java.net/projects/jdk9/
 
-Java9 delivers an impressive set of features, by far the most important are:
+Java 9 delivers an impressive set of features, by far the most important are:
 
 - Project Jigsaw aka modules https://openjdk.java.net/projects/jigsaw/
 - JShell https://openjdk.java.net/jeps/222
 
 Describing any of these items is beyond the scope of this document.
 
-NOTE: it is important to say that *you don’t need modules to run on Java9*, classpath is
+NOTE: it is important to say that *you don’t need modules to run on Java 9*, classpath is
 still supported.
 
 === Immutable collections
@@ -778,7 +778,7 @@ Given:
 List<Optional<String>> listOfOptionals = something();
 ----
 
-in Java8:
+in Java 8:
 
 [source,java]
 ----
@@ -790,7 +790,7 @@ List<String> filteredList = listOfOptionals.stream()
 <1> discarding empty optionals
 <2> unwrapping optionals
 
-in Java9 it is possible to write:
+in Java 9 it is possible to write:
 
 [source,java]
 ----
@@ -852,7 +852,7 @@ Additionally a security check is performed on creation of the `StackWalker` inst
 https://openjdk.java.net/jeps/213
 
 The small language changes included in Project Coin were low hanging fruits but neverthless the project was
-quite successful. Java9 introduces the following small changes:
+quite successful. Java 9 introduces the following small changes:
 
 - `@SafeVarags` on private methods, https://bugs.openjdk.java.net/browse/JDK-7196160
 - `private` methods in interfaces
@@ -993,7 +993,7 @@ The purpose of the flag is to store which encoding to use:
 - `ISO-8859-1/Latin-1` (one byte per character)
 - `UTF-16` (two bytes per character).
 
-== Appendix: Upgrade to Java8
+== Appendix: Upgrade to Java 8
 
 Since some projects and products are stuck in Java7 let's quickly cover JDK8.
 The main features were:
