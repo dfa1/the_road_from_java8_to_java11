@@ -324,8 +324,8 @@ jshell> fullSpace.trim().isEmpty()
 $2 ==> false <2>
 
 ----
-<1> correct
-<2> wrong
+<1> working as expected
+<2> not working as expected
 
 To fix this problem let's use `Character.isWhitespace` method, that is aware of the different types of
 spaces:
@@ -354,12 +354,24 @@ jshell> fullSpace.repeat(10).isBlank()
 $2 ==> true
 ----
 
+Be aware that there are surprising results around the definition of https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Character.html#isWhitespace(int)[`Character.isWhitespace`], such as
+non-breaking spaces or newlines:
+
+[source,java]
+----
+jshell> var nonBreakingSpace = "\u00A0"
+nonBreakingSpace ==> " "
+
+jshell> nonBreakingSpace.isBlank()
+$1 ==> false
+----
+
 === `String.strip()`
 
 https://bugs.openjdk.java.net/browse/JDK-8200378
 
 While almost the same as `trim()`/`trimLeft()`/`trimRight()`, this takes full-width spaces as a
-space (0x20 ASCII character). This new method is Unicode-aware, by using `Character.isWhitespace()`.
+space (0x20 ASCII character).
 
 [source,java]
 ----
