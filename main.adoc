@@ -314,7 +314,7 @@ This is correct but too technical, and perhaps the intent is not clear:
 boolean blank = string.codePoints().allMatch(Character::isWhitespace);
 ----
 
-In this version of JDK it is possible to just use `String.isBlank`:
+In this version of Java it is possible to just use `String.isBlank`:
 
 [source,java]
 ----
@@ -412,7 +412,7 @@ These objects are very useful during unit testing.
 * `String readString(Path, Charset`): reads all content from a file into a string, decoding from bytes to characters using the specified charset;
 * `Path writeString(Path, CharSequence, Charset, OpenOption[])`: write a `CharSequence` (e.g. `String`, `StringBuilder`) to a file. Characters are encoded into bytes using the specified charset.
 
-It is very convenient to use `java.nio.charset.StandardCharsets` (introduced in JDK7, see https://docs.oracle.com/javase/7/docs/api/java/nio/charset/StandardCharsets.html[javadoc]):
+It is very convenient to use `java.nio.charset.StandardCharsets` (introduced in Java 7, see https://docs.oracle.com/javase/7/docs/api/java/nio/charset/StandardCharsets.html[javadoc]):
 
 [source,java]
 ----
@@ -484,7 +484,7 @@ Main features:
  * JEP 312 thread-local handshakes
  * JEP 313 javah removal
  * JEP 314 unicode extentions
- * JEP 319 root certificates, to easy migration from oracle JDK -> open JDK
+ * JEP 319 root certificates, to easy migration from Oracle JDK -> OpenJDK
  * removal of `policytool`
 
 === local type inference
@@ -995,7 +995,7 @@ The purpose of the flag is to store which encoding to use:
 
 == Appendix: Upgrade to Java 8
 
-Since some projects and products are stuck in Java7 let's quickly cover JDK8.
+Since some projects and products are stuck in Java 7 let's quickly cover Java 8.
 The main features were:
 
 - Project Lambda (lambda and streams) https://openjdk.java.net/projects/lambda/
