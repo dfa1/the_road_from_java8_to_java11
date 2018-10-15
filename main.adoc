@@ -307,16 +307,37 @@ jshell> "ab".repeat(Integer.MAX_VALUE) <5>
 
 https://bugs.openjdk.java.net/browse/JDK-8200437
 
+This is a Unicode-aware alternative to `isEmpty()`:
 
+[source,java]
+----
+jshell> var halfSpace = "\u0020"
+halfSpace ==> " "
 
+jshell> var fullSpace = "\u3000"
+fullSpace ==> "　"
+
+jshell> halfSpace.trim().isEmpty()
+$1 ==> true <1>
+
+jshell> fullSpace.trim().isEmpty()
+$2 ==> false <2>
+
+----
+<1> correct
+<2> wrong
+
+To fix this problem let's use `Character.isWhitespace` method, that is aware of the different types of
+spaces:
 
 [source,java]
 ----
 boolean blank = string.codePoints().allMatch(Character::isWhitespace);
 ----
-This is correct but too technical, and perhaps the intent is not clear:
 
-In this version of Java it is possible to just use `String.isBlank`:
+This is correct but too technical and, perhaps, the intent is not clear:
+
+As per Java 11 it is possible to just use `String.isBlank`:
 
 [source,java]
 ----
