@@ -37,9 +37,7 @@ This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0
 https://jdk.java.net/11/release-notes
 
 Java 11 is the new LTS (Long Term Support), so it is über-important to upgrade as soon as possible to this
-version. More details on the LTS releases can be found at https://blog.joda.org/2018/08/java-is-still-available-at-zero-cost.html.
-
-The main feature are:
+version. These are the main features of Java 11:
 
 * stable `java.net.http` module
 * TLS 1.3
@@ -60,11 +58,12 @@ More details can be found https://blog.joda.org/2018/09/time-to-look-beyond-orac
 
 * https://openjdk.java.net/jeps/320 provide missing JARs
 * removal of `Thread.destroy()` and `Thread.stop(Throwable)` methods, see https://bugs.openjdk.java.net/browse/JDK-8204243
-* removal of `com.sun.awt.AWTUtilities` Class, see https://bugs.openjdk.java.net/browse/JDK-8200149
+* removal of `com.sun.awt.AWTUtilities` class, see https://bugs.openjdk.java.net/browse/JDK-8200149
 * removal of removal of `sun.misc.Unsafe.defineClass`, see https://bugs.openjdk.java.net/browse/JDK-8193033
 * source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
 
-Several packages, such as JAXB, are not provided by the JDK anymore so it is required to provide an external dependency for them.
+For example, let's start from JEP 320. Several packages, such as JAXB, are not provided by the JDK
+anymore so it is required to provide an external dependency for them.
 
 For example using JAXB in an Apache Maven just add:
 
@@ -88,6 +87,7 @@ This is a very good reference: https://stackoverflow.com/questions/48204141/repl
 
 https://openjdk.java.net/jeps/330
 
+Historically to run a Java program we had to:
 
 [source]
 ----
@@ -126,8 +126,8 @@ hello world!
 
 https://openjdk.java.net/groups/net/httpclient/intro.html
 
-Introduced in Java 9, and promoted from incubator in Java 11. This is a somewhat big API and it is
-a huge step from `java.net.URLConnection`.
+Introduced in Java 9, and promoted from incubator in Java 11. This is a rather big API and it is
+a huge step forward from `java.net.URLConnection`.
 
 Let's start with an example with `httpbin`:
 
@@ -140,6 +140,7 @@ dfa@aman:~ $ docker run --rm -p 80:80 kennethreitz/httpbin
 ----
 
 this container exposes well-known resources, check https://www.kennethreitz.org/essays/httpbin for reference.
+
 Let's test it with curl:
 
 ----
@@ -306,12 +307,14 @@ jshell> "ab".repeat(Integer.MAX_VALUE) <5>
 
 https://bugs.openjdk.java.net/browse/JDK-8200437
 
-This is correct but too technical, and perhaps the intent is not clear:
+
+
 
 [source,java]
 ----
 boolean blank = string.codePoints().allMatch(Character::isWhitespace);
 ----
+This is correct but too technical, and perhaps the intent is not clear:
 
 In this version of Java it is possible to just use `String.isBlank`:
 
