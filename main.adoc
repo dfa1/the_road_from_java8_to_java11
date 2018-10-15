@@ -9,11 +9,10 @@ Davide Angelocola <davide.angelocola@gmail.com>
 
 == Introduction
 
-As Java developers, we will busy in the upcoming months, upgrading our projects and products to
-the newest Java releases. It will be a slow, incremental process, especially regarding the migration
-from `classpath` to the `modulepath`.
-
-This document tries to summarize new features in a very minimalistic style:
+As Java developers, we will be busy in the upcoming months upgrading to the newest Java releases.
+It will be a slow, incremental process, especially regarding the migration
+from `classpath` to the `modulepath`. This document tries to summarize new features in a very
+minimalistic style:
 
 * focus is on the language level changes, secondarily on deploy/production features
 * use standard *Java Class Library* as much as possible
