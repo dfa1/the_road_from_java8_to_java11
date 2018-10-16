@@ -522,7 +522,7 @@ Main features:
  * JEP 319 root certificates, to easy migration from Oracle JDK -> OpenJDK
  * removal of `policytool`
 
-=== local type inference
+=== Local type inference
 
 https://openjdk.java.net/jeps/286
 
