@@ -197,7 +197,7 @@ This version includes several new important and modern crypto features:
 * ChaCha20 & Poly1305 crypto algorithms
 * Key Agreement with Curve25519 and Curve448
 
-=== var in lambda
+=== `var` in lambda
 
 https://openjdk.java.net/jeps/323
 
