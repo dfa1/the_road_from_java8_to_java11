@@ -717,7 +717,7 @@ $8 ==> 11429
 
 http://openjdk.java.net/projects/jdk9/
 
-Java 9 delivers an impressive set of features, by far the most important are:
+Java 9 delivers an impressive set of features. By far, the most important are:
 
 - Project Jigsaw aka modules https://openjdk.java.net/projects/jigsaw/
 - JShell https://openjdk.java.net/jeps/222
@@ -731,9 +731,7 @@ still supported.
 
 https://openjdk.java.net/jeps/269
 
-JEP 269 introduced some new factory methods for collections.
-New APIs are:
-
+JEP 269 introduced some new factory methods for collections:
 [source,java]
 ----
 Set<Integer> set = Set.of(1,2,3,4);
@@ -747,10 +745,10 @@ NOTE: `Collections.unmodificable` are just read-only wrappers around original da
 
 [source,java]
 ----
-jshell> var list = new ArrayList<>()
+jshell> List<Object> list = new ArrayList<>()
 list ==> []
 
-jshell> var unmodificableList = Collections.unmodifiableList(list)
+jshell> List<Object> unmodificableList = Collections.unmodifiableList(list)
 unmodificableList ==> []
 
 jshell> list.add(1) <1>
@@ -765,7 +763,7 @@ By using these new methods you get immutable data structures:
 
 [source,java]
 ----
-jshell> var immutableList = List.of();
+jshell> List<Object> immutableList = List.of();
 immutableList ==> []
 
 jshell> immutableList.add(1)
@@ -779,10 +777,10 @@ NOTE: sometimes `List.copyOf` is a no-op
 
 [source,java]
 ----
-jshell> List<?> a = List.of(1,2,3)
+jshell> List<Integer> a = List.of(1,2,3)
 a ==> [1, 2, 3]
 
-jshell> List<?> b = List.copyOf(a)
+jshell> List<Integer> b = List.copyOf(a)
 b ==> [1, 2, 3]
 
 jshell> a == b
@@ -799,9 +797,9 @@ jshell> Set.of(1,1)
 |        at Set.of (Set.java:521)
 ----
 
-=== Unmodificable collectors
+==== Unmodificable collectors
 
-Mow it is possible to use `java.util.stream.Collectors` to build unmodificable collections, avoiding
+Now it is possible to use `java.util.stream.Collectors` to build unmodificable collections, avoiding
 using `Collections` factory methods.
 
 For example:
