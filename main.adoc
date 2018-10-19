@@ -791,7 +791,7 @@ $7 ==> true
 ----
 
 .Gotcha:
-NOTE: cannot use `Set.of` to filter away duplicated.
+NOTE: it is not possible to use `Set.of()` to filter away duplicates
 
 [source,java]
 ----
@@ -801,41 +801,54 @@ jshell> Set.of(1,1)
 |        at Set.of (Set.java:521)
 ----
 
-Now it is also possible to use `java.util.stream.Collectors`
-to build an unmodificableList/Set/Map.
+=== Unmodificable collectors
+
+Mow it is possible to use `java.util.stream.Collectors` to build unmodificable collections, avoiding
+using `Collections` factory methods.
+
+For example:
+
+[source,java]
+----
+jshell> Collections.unmodifiableList(Stream.of(1,2,3).collect(Collectors.toList()))
+$1 ==> [1, 2, 3]
+
+jshell> Stream.of(1,2,3).collect(Collectors.toUnmodifiableList())
+$2 ==> [1, 2, 3]
+----
+
+Likewise it is possible to build immutable lists and maps:
+
+[source,java]
+----
+jshell> Stream.of(1,2,3).collect(Collectors.toUnmodifiableList())
+$26 ==> [1, 2, 3]
+
+jshell> Stream.of(1,2,3).collect(Collectors.toUnmodifiableMap(e -> e, e -> e * e))
+$27 ==> {1=1, 2=4, 3=9}
+----
 
 === `java.util.Optional.stream()`
 
-Given:
+This is a small enhancement that enables the use of `Stream.flatMap()`.
+For example:
 
 [source,java]
 ----
+jshell> List<Optional<Integer>> data = List.of(Optional.of(42), Optional.empty(), Optional.of(-1));
+data ==> [Optional[42], Optional.empty, Optional[-1]]
+
+jshell> data.stream().filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList()); <1>
+$1 ==> [42, -1]
+
+jshell> data.stream().flatMap(Optional::stream).collect(Collectors.toList()); <2>
+$2 ==> [42, -1]
 List<Optional<String>> listOfOptionals = something();
 ----
+<1> this is a common Java 8 pattern: `filter` then `map`
+<2> this is Java 9
 
-in Java 8:
-
-[source,java]
-----
-List<String> filteredList = listOfOptionals.stream()
-  .filter(Optional::isPresent) <1>
-  .map(Optional::get) <2>
-  .collect(Collectors.toList());
-----
-<1> discarding empty optionals
-<2> unwrapping optionals
-
-in Java 9 it is possible to write:
-
-[source,java]
-----
-List<String> filteredList = listOfOptionals.stream()
-  .flatMap(Optional::stream) <1>
-  .collect(Collectors.toList());
-----
-<1> `Optional` as `Stream`
-
-`Optional.stream()` implementation is straightforward:
+Please note that `Optional.stream()` implementation is straightforward (source has been taken from JDK9):
 
 [source,java]
 ----
