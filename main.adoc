@@ -958,6 +958,17 @@ List all system processes:
 include::snippets/java9_process_list.jsh[]
 ----
 
+Sample output on macOS:
+
+----
+[user: Optional[dfa], cmd: /Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home/bin/java, args: [-agentlib:jdwp=transport=dt_socket,address=localhost:61581, jdk.jshell.execution.RemoteExecutionControl, 61580], startTime: Optional[2018-10-19T06:15:44.622Z], totalTime: Optional[PT0.459124S]]
+[user: Optional[dfa], cmd: /Library/Java/Home//bin/jshell, startTime: Optional[2018-10-19T06:15:44.225Z]]
+[user: Optional[root], startTime: Optional[2018-10-19T06:14:33.378Z]]
+[user: Optional[dfa], cmd: /System/Library/PrivateFrameworks/AOSKit.framework/Versions/A/XPCServices/com.apple.iCloudHelper.xpc/Contents/MacOS/com.apple.iCloudHelper, startTime: Optional[2018-10-19T06:14:33.081Z]]
+[user: Optional[dfa], cmd: /Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home/bin/java, args: [-agentlib:jdwp=transport=dt_socket,address=localhost:61572, jdk.jshell.execution.RemoteExecutionControl, 61571], startTime: Optional[2018-10-19T06:14:32.070Z]]
+...
+----
+
 === `@Deprecated` enhancements
 
 https://openjdk.java.net/jeps/277
