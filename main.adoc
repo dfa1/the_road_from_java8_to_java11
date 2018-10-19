@@ -775,7 +775,6 @@ jshell> immutableList.add(1)
 |        at (#6:1)
 ----
 
-.Gotcha:
 NOTE: sometimes `List.copyOf` is a no-op
 
 [source,java]
@@ -790,7 +789,6 @@ jshell> a == b
 $7 ==> true
 ----
 
-.Gotcha:
 NOTE: it is not possible to use `Set.of()` to filter away duplicates
 
 [source,java]
