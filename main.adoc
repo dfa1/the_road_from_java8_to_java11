@@ -871,6 +871,14 @@ IntStream
   .forEach(System.out::println);
 ----
 
+=== More concurrency updates
+
+http://openjdk.java.net/jeps/266
+
+This includes:
+- Reactive Streams publish-subscribe framework (see http://www.reactive-streams.org/)
+- refinements in `java.util.concurrent.CompletableFuture`
+
 === Stack walk API
 
 https://openjdk.java.net/jeps/259
