@@ -45,6 +45,7 @@ version. These are the main features of Java 11:
 * removal of Web Start, with no clear replacement
 * removal of Java applets
 * removal of JavaFX: the FX libraries have moved to the OpenJFX project
+* preparing for removal of Nashorn JavaScript Engine (https://openjdk.java.net/jeps/335)
 
 === Which JDK?
 
