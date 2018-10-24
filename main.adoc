@@ -908,7 +908,7 @@ Additionally a security check is performed on creation of the `StackWalker` inst
 
 https://openjdk.java.net/jeps/213
 
-The small language changes included in Project Coin were low hanging fruits but neverthless the project was
+The small language changes included in Project Coin were low hanging fruits but nevertheless the project was
 quite successful. Java 9 introduces the following small changes:
 
 - `@SafeVarags` on private methods, https://bugs.openjdk.java.net/browse/JDK-7196160
