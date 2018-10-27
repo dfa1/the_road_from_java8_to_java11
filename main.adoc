@@ -489,7 +489,7 @@ because the definition is:
 
 [source,java]
 ----
-static Path of(String first, String... more) {
+public static Path of(String first, String... more) {
     ...
 }
 ----
@@ -509,6 +509,13 @@ https://openjdk.java.net/jeps/309
 This is mostly for compilers that target the JVM. However it could have interesting ripples in the
 whole ecosystem, as `invokedynamic` did.
 
+=== Java Mission Control & Flight Recorder
+
+https://jdk.java.net/jmc/
+
+Java Flight Recorder and Java Mission Control together create a complete tool chain
+to continuously collect low level and detailed runtime information enabling
+after-the-fact incident analysis. Developement website https://wiki.openjdk.java.net/display/jmc/Main
 
 == Upgrade to Java 10
 
