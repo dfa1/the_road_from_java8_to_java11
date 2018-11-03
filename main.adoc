@@ -27,6 +27,7 @@ minimalistic style:
 
 - Karrie Moore
 - Alessandro Sebastiani
+- Matteo Cerina
 
 === License
 
@@ -753,23 +754,23 @@ Map<String, Integer> mapLonger = Map.ofEntries(Map.entry("key1", 1), Map.entry("
 ----
 
 .Immutability vs views
-NOTE: `Collections.unmodificable` are just read-only wrappers around original data structure: if the original data structure is mutable, you can still see changes in the wrapper.
+NOTE: `Collections.unmodifiable` are just read-only wrappers around original data structure: if the original data structure is mutable, you can still see changes in the wrapper.
 
 [source,java]
 ----
 jshell> List<Object> list = new ArrayList<>()
 list ==> []
 
-jshell> List<Object> unmodificableList = Collections.unmodifiableList(list)
-unmodificableList ==> []
+jshell> List<Object> unmodifiableList = Collections.unmodifiableList(list)
+unmodifiableList ==> []
 
 jshell> list.add(1) <1>
 $3 ==> true
 
-jshell> unmodificableList <1>
-unmodificableList ==> [1]
+jshell> unmodifiableList <1>
+unmodifiableList ==> [1]
 ----
-<1> changes to `unmodificableList` are still possible
+<1> changes to `unmodifiableList` are still possible
 
 By using these new methods you get immutable data structures:
 
@@ -811,7 +812,7 @@ jshell> Set.of(1,1)
 
 ==== Unmodificable collectors
 
-Now it is possible to use `java.util.stream.Collectors` to build unmodificable collections, avoiding
+Now it is possible to use `java.util.stream.Collectors` to build unmodifiable collections, avoiding
 using `Collections` factory methods.
 
 For example:
