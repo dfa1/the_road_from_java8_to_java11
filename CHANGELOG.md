@@ -62,7 +62,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.3.1] - 2018-09-29
 - Docker examples
-- minor cleanups
+- minor cleanups by Alessandro Sebastiani
 
 ## [0.3] - 2018-09-28
 - more consistent style
