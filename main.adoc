@@ -28,6 +28,7 @@ minimalistic style:
 - Karrie Moore
 - Alessandro Sebastiani
 - Matteo Cerina
+- Levin Germann
 
 === License
 
@@ -307,7 +308,7 @@ jshell> "ab".repeat(Integer.MAX_VALUE) <5>
 <2> corner case `n=1`, result is `"ab"`
 <3> corner case `n=0`, result is empty `""`
 <4> error, since `n<0`
-<5> error fails in a fast method to avoid allocating big chunks of memory
+<5> fail fast method in order to avoid allocating a big chunk of memory
 
 === `String.isBlank()`
 
