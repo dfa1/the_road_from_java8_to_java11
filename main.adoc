@@ -68,10 +68,10 @@ More details can be found https://blog.joda.org/2018/09/time-to-look-beyond-orac
 * removal of the `sun.misc.Unsafe.defineClass` method. Users should use the public replacement,`java.lang.invoke.MethodHandles.Lookup.defineClass`, added in Java 9
 * source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
 
-For example, let's start from JEP 320. Several packages, such as JAXB, are not provided
+Let's start from JEP 320. Several packages, such as JAXB, are not provided
 by the JDK anymore so it is required to provide an external dependency for them.
 
-For example using JAXB in an Apache Maven just add:
+For example, to use JAXB in Apache Maven just add:
 
 [source,xml]
 ----
@@ -132,7 +132,7 @@ hello world!
 
 https://openjdk.java.net/groups/net/httpclient/intro.html
 
-Introduced in Java 9, and promoted from incubator in Java 11. This is a rather big API and it is
+Introduced in Java 9 and promoted from incubator in Java 11. This is a rather big API and it is
 a huge step forward from `java.net.URLConnection`.
 
 Let's start with an example with `httpbin`:
@@ -145,7 +145,7 @@ dfa@aman:~ $ docker run --rm -p 80:80 kennethreitz/httpbin
 [2018-09-29 10:04:20 +0000] [9] [INFO] Booting worker with pid: 9
 ----
 
-this container exposes well-known resources, check https://www.kennethreitz.org/essays/httpbin for reference.
+This container exposes well-known resources, check https://www.kennethreitz.org/essays/httpbin for reference.
 
 Let's test it with curl:
 
@@ -156,7 +156,7 @@ dfa@aman:~ $ curl localhost/user-agent
 }
 ----
 
-Everything looks fine, not let's write a simple HTTP2 client using `java.net.http` module:
+Everything looks fine, now let's write a simple HTTP2 client using `java.net.http` module:
 
 [source,java]
 ----
@@ -181,11 +181,11 @@ Exception in thread "main" java.net.http.HttpTimeoutException: request timed out
 	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:119)
 	at HttpClientDemo.main(java11_http_client.java:19)
 ----
-<1> as expected a timeout is triggered on the client client side
+<1> as expected a timeout is triggered on the client side
 
 ==== `WebSocket` and `WebSocketListener`
 
-This modules supports also web sockets:
+This module also support web sockets:
 
 [source,java]
 ----
@@ -212,7 +212,7 @@ https://openjdk.java.net/jeps/323
 (var x, var y) -> x.process(y)
 ----
 
-now it is equivalent to:
+is now equivalent to:
 
 [source,java]
 ----
@@ -307,7 +307,7 @@ jshell> "ab".repeat(Integer.MAX_VALUE) <5>
 <2> corner case `n=1`, result is `"ab"`
 <3> corner case `n=0`, result is empty `""`
 <4> error, since `n<0`
-<5> error fail fast method to avoid allocating big chunks of memory
+<5> error fails in a fast method to avoid allocating big chunks of memory
 
 === `String.isBlank()`
 
@@ -341,7 +341,7 @@ spaces:
 boolean blank = string.codePoints().allMatch(Character::isWhitespace);
 ----
 
-This is correct but too technical and, perhaps, the intent is not clear:
+This is correct but too technical and perhaps the intent is not clear:
 
 As per Java 11 it is possible to just use `String.isBlank`:
 
@@ -376,7 +376,7 @@ $1 ==> false
 
 https://bugs.openjdk.java.net/browse/JDK-8200378
 
-While almost the same as `trim()`/`trimLeft()`/`trimRight()`, this takes full-width spaces as a
+Whilst almost the same as `trim()`/`trimLeft()`/`trimRight()`, this takes full-width spaces as a
 space (0x20 ASCII character).
 
 [source,java]
@@ -451,7 +451,7 @@ These objects are very useful during unit testing.
 === Additions to `java.nio.file.Files`
 
 * `String readString(Path, Charset`): reads all content from a file into a string, decoding from bytes to characters using the specified charset;
-* `Path writeString(Path, CharSequence, Charset, OpenOption[])`: write a `CharSequence` (e.g. `String`, `StringBuilder`) to a file. Characters are encoded into bytes using the specified charset.
+* `Path writeString(Path, CharSequence, Charset, OpenOption[])`: writes a `CharSequence` (e.g. `String`, `StringBuilder`) to a file. Characters are encoded into bytes using the specified charset.
 
 It is very convenient to use `java.nio.charset.StandardCharsets` (introduced in Java 7, see https://docs.oracle.com/javase/7/docs/api/java/nio/charset/StandardCharsets.html[javadoc]):
 
@@ -532,7 +532,7 @@ Main features:
  * JEP 312 thread-local handshakes
  * JEP 313 javah removal
  * JEP 314 unicode extentions
- * JEP 319 root certificates, to easy migration from Oracle JDK -> OpenJDK
+ * JEP 319 root certificates, to easy migrate from Oracle JDK -> OpenJDK
  * removal of `policytool`
 
 === Local type inference
@@ -737,7 +737,7 @@ Java 9 delivers an impressive set of features. By far, the most important are:
 
 Describing any of these items is beyond the scope of this document.
 
-NOTE: it is important to say that *you don’t need modules to run on Java 9*, classpath is
+NOTE: It is important to say that *you don’t need modules to run on Java 9*, classpath is
 still supported.
 
 === Immutable collections
@@ -1061,7 +1061,7 @@ $ java -Xlog:gc,gc+heap -jar myapp.jar
 https://openjdk.java.net/jeps/254
 
 This is just a more efficient internal representation of `java.lang.String`, no public methods
-has been changed.
+have been changed.
 
 In practice, the internal representation of string has been changed from `char[]` to `byte[]` + flag.
 The purpose of the flag is to store which encoding to use:
