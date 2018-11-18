@@ -45,7 +45,7 @@ These are the main features of Java 11:
 
 * stable `java.net.http` module
 * TLS 1.3
-* removal of Corba and Java EE
+* removal of Corba and Java EE (JEP 320)
 * removal of Web Start, with no clear replacement
 * removal of Java applets
 * removal of JavaFX: the FX libraries have moved to the OpenJFX project
@@ -67,15 +67,19 @@ However, there are free, zero-cost, alternatives:
 
 === Solving migration problems
 
-* https://openjdk.java.net/jeps/320 provide missing JARs
-* removal of `Thread.destroy()` and `Thread.stop(Throwable)` methods, see https://bugs.openjdk.java.net/browse/JDK-8204243
-* removal of `com.sun.awt.AWTUtilities` class, see https://bugs.openjdk.java.net/browse/JDK-8200149
-* removal of removal of `sun.misc.Unsafe.defineClass`, see https://bugs.openjdk.java.net/browse/JDK-8193033
-* removal of the `sun.misc.Unsafe.defineClass` method. Users should use the public replacement,`java.lang.invoke.MethodHandles.Lookup.defineClass`, added in Java 9
+Be aware that in order to upgrade to Java 11 some non-trivial changes are required, depending
+by your project:
+
+* removal of Java EE and Corba https://openjdk.java.net/jeps/320[JEP 320]: non trivial, see below
+* removal of `Thread.destroy()` and `Thread.stop(Throwable)` methods, see https://bugs.openjdk.java.net/browse/JDK-8204243: trivial change
+* removal of `com.sun.awt.AWTUtilities` class https://bugs.openjdk.java.net/browse/JDK-8200149: this should be a mechanical change
+* removal of `sun.misc.Unsafe.defineClass` https://bugs.openjdk.java.net/browse/JDK-8193033 users should use the public replacement,`java.lang.invoke.MethodHandles.Lookup.defineClass`, added in Java 9
 * source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
 
-Let's start from JEP 320. Several packages, such as JAXB, are not provided
-by the JDK anymore so it is required to provide an external dependency for them.
+=== JEP 320
+
+Several packages, such as JAXB, are not provided by the JDK anymore.
+It is required to provide an external dependency for them.
 
 For example, to use JAXB in Apache Maven just add:
 
