@@ -76,7 +76,7 @@ by your project:
 * removal of `sun.misc.Unsafe.defineClass` https://bugs.openjdk.java.net/browse/JDK-8193033 users should use the public replacement,`java.lang.invoke.MethodHandles.Lookup.defineClass`, added in Java 9
 * source incompatibility for `java.util.Stream.toArray(null)`, see https://bugs.openjdk.java.net/browse/JDK-8060192
 
-=== JEP 320
+==== JEP 320
 
 Several packages, such as JAXB, are not provided by the JDK anymore.
 It is required to provide an external dependency for them.
@@ -98,6 +98,15 @@ For example, to use JAXB in Apache Maven just add:
 ----
 
 This is a very good reference: https://stackoverflow.com/questions/48204141/replacements-for-deprecated-jpms-modules-with-java-ee-apis/48204154#48204154
+
+==== Libraries, frameworks and tools
+
+- upgrade to ASM 7.0 for Java 11 support https://asm.ow2.io/versions.html
+- upgrade to Spring 5.1 https://jira.spring.io/browse/SPR-16391
+- upgrade to Hibernate 5.3.3+ http://in.relation.to/2018/09/13/using-hibernate-orm-with-jdk11/
+- upgrade to Apache Maven plugins to latest version (e.g. maven-compiler-plugin to 3.8.0)
+- gradle TBD
+- sonarcube TBD
 
 === Launch Single-File Source-Code Programs
 
