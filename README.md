@@ -8,11 +8,11 @@
 
 ### Build
 
-To create a PDF:
-`./build-pdf.sh`
+To build all supported formats at once:
 
-To create a self-contained HTML5 page:
-`./build-html.sh`
+`$ bundler --binstubs`
+
+`$ ./bin/rake`
 
 ### Sources
 

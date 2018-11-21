@@ -1,16 +1,17 @@
 image: ruby:2.5.3
 
 pipelines:
-  branches:
-    master:
+  default:
       - step:
           script:
-            - export FILE="ignore.pdf"
-            - ./build-pdf.sh $FILE
+            - bundle --binstubs
+            - export OUTFILE="ignore"
+            - ./bin/rake pdf
   tags:
     v*:
       - step:
           script:
-            - export FILE="the_road_from_java8_to_java11-${BITBUCKET_TAG}.pdf"
-            - ./build-pdf.sh $FILE
-            - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"$FILE"
+            - bundle --binstubs
+            - export OUTFILE="the_road_from_java8_to_java11-${BITBUCKET_TAG}"
+            - ./bin/rake pdf
+            - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"$OUTFILE"
