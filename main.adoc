@@ -1090,8 +1090,7 @@ The purpose of the flag is to store which encoding to use:
 
 == Appendix: Upgrade to Java 8
 
-Since some projects and products are stuck in Java 7 let's quickly cover Java 8.
-The main features were:
+The main features of Java 8 are:
 
 - Project Lambda (lambda and streams) https://openjdk.java.net/projects/lambda/
 - ThreeTen (new date/time library) https://openjdk.java.net/projects/threeten/
@@ -1104,7 +1103,7 @@ This is a little known class that wraps an `IOException` with an unchecked excep
 
 === `StampedLocks`
 
-A fast alternative to `ReadWriteLock`, that has an "optimistic" mode.
+A fast alternative to `ReadWriteLock`, that has an optimistic mode.
 
 === Concurrent Adders
 
@@ -1125,9 +1124,11 @@ public static SecureRandom getInstanceStrong()
 A great addition is a set of new methods to perform basic math operation, throwing exceptions when
 overflow are detected:
 
+[source,java]
 ----
-long a = Integer.MAX_VALUE * 2; <1>
-long b = Math.multiplyExact(Integer.MAX_VALUE, 2) <2>
+jshell> Integer.MAX_VALUE * 2 <1>
+$1 ==> -2
+jshell> Math.multiplyExact(Integer.MAX_VALUE, 2) <2>
 |  Exception java.lang.ArithmeticException: integer overflow
 |        at Math.multiplyExact (Math.java:906)
 |        at (#2:1)
@@ -1139,6 +1140,7 @@ long b = Math.multiplyExact(Integer.MAX_VALUE, 2) <2>
 
 This is a static method on `java.lang.String`:
 
+[source,java]
 ----
 jshell> String.join(",");
 $10 ==> ""
