@@ -16,7 +16,7 @@ minimalistic style:
 
 * focus is on the language level changes, secondarily on deploy/production features
 * use standard *Java Class Library* as much as possible
-* use *JShell* as much as possible
+* use *JShell* as much as possible, https://www.infoq.com/articles/jshell-java-repl[a well written introduction to JShell]
 * provide links to release notes, JEPs and bug reports
 
 === Author
