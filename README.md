@@ -6,6 +6,11 @@
 * Migration to latest Java LTS release
 * Examples using JShell
 
+### Downloads
+
+[PDF](https://dfa.bitbucket.io/the_road_from_java8_to_java11.pdf)
+[HTML](https://dfa.bitbucket.io/the_road_from_java8_to_java11.html)
+
 ### Build
 
 To build all supported formats at once:
