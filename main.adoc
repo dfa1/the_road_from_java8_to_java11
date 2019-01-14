@@ -1152,4 +1152,24 @@ jshell> String.join(",", "a", "b");
 $12 ==> "a,b"
 ----
 
-There are two overloads: one for vararg array and another one for `Iterable<? extends CharSequence>`.
+There are two overloads of this method: one for `String...` and another one for `Iterable<? extends CharSequence>`.
+
+=== Generalized Target-Type Inference
+
+https://openjdk.java.net/jeps/101
+
+This is a little know feature, almost invisible but it is extremely valuable for
+users of our classes:
+
+----
+jshell> void foo(List<String> args) { System.out.println(args); }
+|  created method foo(List<String>)
+
+jshell> foo(Collections.<String>emptyList()) <1>
+[]
+
+jshell> foo(Collections.emptyList()) <2>
+[a, b]
+----
+<1> Java 7: `<String>` is needed by the compiler to avoid this error `incompatible types: java.util.List<java.lang.Object> cannot be converted to java.util.List<java.lang.String>`
+<2> Java 8: `<String>` is not needed anymore: compiler can infers it
