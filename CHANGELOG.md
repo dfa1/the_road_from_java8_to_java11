@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 - Java 8: Generalized Target-Type Inference
 - Java 8: Explicit Receiver Parameters
+- Java 8: new methods in java.util.Arrays
 
 ## [0.7.1] - 2018-12-14
 - Java 8: cleanups
