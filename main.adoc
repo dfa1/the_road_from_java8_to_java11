@@ -1161,6 +1161,7 @@ https://openjdk.java.net/jeps/101
 This is a little know feature, almost invisible but it is extremely valuable for
 users of our classes:
 
+[source,java]
 ----
 jshell> void foo(List<String> args) { System.out.println(args); }
 |  created method foo(List<String>)
@@ -1173,3 +1174,28 @@ jshell> foo(Collections.emptyList()) <2>
 ----
 <1> Java 7: `<String>` is needed by the compiler to avoid this error `incompatible types: java.util.List<java.lang.Object> cannot be converted to java.util.List<java.lang.String>`
 <2> Java 8: `<String>` is not needed anymore: compiler can infers it
+
+=== Explicit Receiver Parameters
+
+https://blog.joda.org/2015/12/explicit-receiver-parameters.html
+
+I discovered this recently but never found a decent use of this feature:
+
+[source,java]
+----
+jshell> public class Foo {
+   ...>   public void foo() { }
+   ...> }
+|  created class Foo <1>
+
+jshell> public class Foo2 {
+   ...>   public void foo(Foo2 this) { }
+   ...> }
+|  created class Foo2 <2>
+----
+<1> without explicit receiver type
+<2> with explicit receiver type, fully equivalent to <1>
+
+The purpose is to allow receiver type to be annoted, later it is possible
+to make use of the annotation by using
+https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Executable.html#getAnnotatedReceiverType--[Executable#getAnnotatedReceiverType]. Please note that `java.lang.reflect.Executable` is the superclass of both `Method` as well as `Constructor`.
