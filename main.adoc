@@ -1237,7 +1237,7 @@ Let's put all the pieces together:
 ----
 jshell> int[] triangularNumber(int n) {
    ...>   int[] result = new int[n];
-   ...>   Arrays.setAll(result, idx -> idx + 1);
+   ...>   Arrays.parallelSetAll(result, idx -> idx + 1);
    ...>   Arrays.parallelPrefix(result, (acc, e) -> acc + e);
    ...>   return result;
    ...> }
