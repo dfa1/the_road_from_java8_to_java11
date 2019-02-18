@@ -690,6 +690,8 @@ $1 ==> 123 <2>
 <2> the JVM sees 123MB
 
 It is possible then to fine tune the memory settings by using JVM flags `-Xmx`, `-Xms`, etc.
+A very nice explanation about Docker and JVM memory settings can be found here https://stackoverflow.com/questions/53451103/
+
 
 ==== References
 More on this can be found in the following tickets:
