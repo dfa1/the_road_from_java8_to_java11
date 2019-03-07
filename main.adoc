@@ -106,7 +106,7 @@ This is a very good reference: https://stackoverflow.com/questions/48204141/repl
 - upgrade to Hibernate 5.3.3+ http://in.relation.to/2018/09/13/using-hibernate-orm-with-jdk11/
 - upgrade to Apache Maven plugins to latest version (e.g. maven-compiler-plugin to 3.8.0)
 - gradle TBD
-- sonarcube TBD
+- sonarcube fully supports Java 11 (at least for me using version 7.4 with SonarJava 5.10, probably also earlier versions would be fine)
 
 === Launch Single-File Source-Code Programs
 
