@@ -1043,10 +1043,9 @@ public void bar() {
 
 https://openjdk.java.net/jeps/158
 
-This is invaluable in debugging problems in production problems,by
-by capture and log interesting events happening inside the JVM.
+This is invaluable for debugging production problems.
 
-For example it is possible to include every tag around gc:
+For example, it is possible to include every tag around gc:
 
 ----
 $ java -Xlog:gc* -jar myapp.jar
@@ -1062,7 +1061,7 @@ $ java -Xlog:gc* -jar myapp.jar
 [1.803s][info][gc,heap,exit ]   class space    used 1042K, capacity 1203K, committed 1280K, reserved 1048576K
 ----
 
-Or restrict to a more specific tag, such as gc+heap:
+Or restrict to a more specific tag, such as `gc+heap`:
 
 ----
 $ java -Xlog:gc,gc+heap -jar myapp.jar
