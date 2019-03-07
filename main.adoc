@@ -917,21 +917,34 @@ This includes:
 
 https://openjdk.java.net/jeps/259
 
-This is useful in several occasions and now it is possible to capture a partial stacktrace
-in a very simple and effective way.
-
-For example getting the caller it is trivial now:
-
-[source,java]
-----
-StackWalker
-	.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE)
-	.getCallerClass()
-----
-
 `StackWalker` instances are thread-safe and thus can be shared between threads: each thread will see
 its own stack.
 Additionally a security check is performed on creation of the `StackWalker` instance, no further checks are performed later.
+
+This is useful in several occasions and now it is possible to capture a partial stacktrace
+in a very simple and effective way.
+
+That could be used to write a generic `LoggerFactory` for JUL:
+
+[source,java]
+----
+import java.lang.StackWalker.Option;
+import java.util.logging.Logger;
+
+public class LoggerFactory {
+	public static Logger forEnclosingClass() {
+		Class<?> callerClass = StackWalker.getInstance(Option.RETAIN_CLASS_REFERENCE).getCallerClass();
+		return Logger.getLogger(callerClass.getCanonicalName());
+	}
+}
+
+// client code
+public class Demo {
+
+    private final Logger logger = LoggerFactory.forEnclosingClass();
+
+}
+----
 
 === Milling Project Coin
 
