@@ -1217,14 +1217,14 @@ https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Executable.html#getA
 
 === Arrays
 
-Very specific yet useful method has been added to `java.util.Arrays`:
+Very specific yet useful methods has been added to `java.util.Arrays`:
 
 - `parallelSort`
 - `parallelPrefix`
 - `parallelSetAll`
 - `setAll`
 
-WARNING: be aware that parallelPrefix with double[] may yield different results of a sequential algorithm (this because floating point operation may be not associative).
+WARNING: be aware that parallelPrefix with `double[]` may yield different results of a sequential algorithm (this because floating point operation may be not associative).
 
 It is very easy to implement https://en.wikipedia.org/wiki/Triangular_number[Triangular number]
 with this new methods. Let's explore the solution with JShell:

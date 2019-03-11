@@ -5,9 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.8.0] - 2019-03-11
+- Java 11: sonar support
+- Java 11: StackWalker example
 - Java 8: Generalized Target-Type Inference
 - Java 8: Explicit Receiver Parameters
-- Java 8: new methods in java.util.Arrays
+- Java 8: new methods in java.util.Arrays with triangular numbers as example
 
 ## [0.7.1] - 2018-12-14
 - Java 8: cleanups
