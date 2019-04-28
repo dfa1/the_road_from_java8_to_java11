@@ -1,4 +1,6 @@
-# README #
+# The Road From Java 8 to Java 11 #
+
+[![License](https://img.shields.io/badge/License-CC_BY_SA-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## What is this repository for? ###
 
@@ -29,4 +31,3 @@ To build all supported formats at once:
 New contributors are always welcome! If you discover errors or omissions in this document
 please don't hesitate to submit an issue or open a pull request with a fix.
 
-License is CC-BY-SA 4.0 (https://creativecommons.org).
