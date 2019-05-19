@@ -4,9 +4,9 @@
 
 ## What is this repository for? ###
 
-* What's new in Java 9, 10, 11
-* Migration to latest Java LTS release
-* Examples using JShell
+* What's new in Java 8, 9, 10, 11
+* Some migration notes and guidance
+* Examples using https://openjdk.java.net/jeps/222[JShell]
 
 ## Downloads
 
@@ -15,8 +15,7 @@
 
 ## Build
 
-To build all supported formats at once:
-
+To build all supported formats at once use ruby (>= 2.5) + bundler (>= 2.0.1):
 `$ bundler --binstubs`
 
 `$ ./bin/rake`
