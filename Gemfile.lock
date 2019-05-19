@@ -5,7 +5,7 @@ GEM
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     afm (0.2.2)
-    asciidoctor (1.5.7)
+    asciidoctor (2.0.9)
     asciidoctor-pdf (1.5.0.alpha.17)
       asciidoctor (>= 1.5.0, < 3.0.0)
       concurrent-ruby (~> 1.1.0)
@@ -56,7 +56,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  asciidoctor (= 1.5.7)!
+  asciidoctor (= 2.0.9)!
   asciidoctor-pdf!
   coderay!
   rake!
