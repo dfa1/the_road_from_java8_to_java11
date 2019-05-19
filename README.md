@@ -6,7 +6,7 @@
 
 * What's new in Java 8, 9, 10, 11
 * Some migration notes and guidance
-* Examples using https://openjdk.java.net/jeps/222[JShell]
+* Examples using [JShell](https://openjdk.java.net/jeps/222)
 
 ## Downloads
 
