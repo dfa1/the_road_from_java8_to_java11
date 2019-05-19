@@ -1,0 +1,22 @@
+trigger:
+- '*'
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.5'
+
+- script: |
+    gem install bundler
+
+- script: |
+    bundler --binstubs
+    ./bin/rake pdf
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'the_road_from_java8_to_java11-$(Build.BuildNumber).pdf'
+    targetPath: 'the_road_from_java8_to_java11.pdf'

@@ -1,6 +1,6 @@
 = The road from Java 8 to Java 11
 Davide Angelocola <davide.angelocola@gmail.com>
-
+:toc:
 :copyright: CC-BY-SA 4.0
 :doctype: book
 :creator: {author}

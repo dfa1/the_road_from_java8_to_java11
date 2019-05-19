@@ -1,7 +1,7 @@
-filename = ENV['OUTFILE'] || 'the_road_from_java8_to_java11'
+filename = 'the_road_from_java8_to_java11'
 version = `git describe`
 date = Time.now.strftime("%Y-%m-%d")
-params = "-a toc --attribute revnumber='#{version}' --attribute revdate='#{date}' --failure-level WARN"
+params = "--attribute revnumber='#{version}' --attribute revdate='#{date}' --failure-level WARN"
 
 task :html do
   begin
