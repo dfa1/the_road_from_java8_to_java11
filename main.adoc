@@ -895,7 +895,7 @@ public Stream<T> stream() {
 
 https://bugs.openjdk.java.net/browse/JDK-8071597
 
-Another nice addiction to the Stream API:
+Another nice addiction to the Stream API is `takeWhile` and `dropWhile`:
 
 [source,java]
 ----
@@ -909,7 +909,6 @@ IntStream
 
 http://openjdk.java.net/jeps/266
 
-This includes:
 - Reactive Streams publish-subscribe framework (see http://www.reactive-streams.org/)
 - refinements in `java.util.concurrent.CompletableFuture`
 
