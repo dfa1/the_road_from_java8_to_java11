@@ -535,7 +535,7 @@ https://jdk.java.net/jmc/
 
 Java Flight Recorder and Java Mission Control together create a complete tool chain
 to continuously collect low level and detailed runtime information enabling
-after-the-fact incident analysis. Developement website https://wiki.openjdk.java.net/display/jmc/Main
+after-the-fact incident analysis. Development website https://wiki.openjdk.java.net/display/jmc/Main
 
 == Upgrade to Java 10
 
@@ -550,7 +550,7 @@ Main features:
  * JEP 310 application class-data sharing
  * JEP 312 thread-local handshakes
  * JEP 313 javah removal
- * JEP 314 unicode extentions
+ * JEP 314 unicode extensions
  * JEP 319 root certificates, to easy migrate from Oracle JDK -> OpenJDK
  * removal of `policytool`
 
@@ -831,7 +831,7 @@ jshell> Set.of(1,1)
 |        at Set.of (Set.java:521)
 ----
 
-==== Unmodificable collectors
+==== Unmodifiable collectors
 
 Now it is possible to use `java.util.stream.Collectors` to build unmodifiable collections, avoiding
 using `Collections` factory methods.
@@ -953,7 +953,7 @@ https://openjdk.java.net/jeps/213
 The small language changes included in Project Coin were low hanging fruits but nevertheless the project was
 quite successful. Java 9 introduces the following small changes:
 
-- `@SafeVarags` on private methods, https://bugs.openjdk.java.net/browse/JDK-7196160
+- `@SafeVarargs` on private methods, https://bugs.openjdk.java.net/browse/JDK-7196160
 - `private` methods in interfaces
 - allow final or effectively final variables to be used as resources in try-with-resources https://bugs.openjdk.java.net/browse/JDK-7196163
 - `_` identifier now is reserved
