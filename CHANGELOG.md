@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.9.0] - 2019-05-19
+- migrated to asciidoctor 2.0
+- migrated to azure-pipelines
+- minor cleanups
+
 ## [0.8.0] - 2019-03-11
 - Java 11: sonar support
 - Java 11: StackWalker example
