@@ -16,6 +16,7 @@
 ## Build
 
 To build all supported formats at once use ruby (>= 2.5) + bundler (>= 2.0.1):
+
 `$ bundler --binstubs`
 
 `$ ./bin/rake`
