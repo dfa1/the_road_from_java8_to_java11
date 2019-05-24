@@ -716,16 +716,16 @@ it is possible to use `@summary`:
 
 === `java.io.Reader.transferTo(Writer)`
 
-This is a long awaited feature, usually provided by external libraries such as Apache IOUtils.
+A long awaited feature, usually provided by external libraries such as https://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/IOUtils.html[Apache IOUtils]:
 
 [source,java]
 ----
 jshell> import java.io.*
 
-jshell> var a = new StringReader("hello world");
+jshell> var a = new StringReader("hello world")
 a ==> java.io.StringReader@3abbfa04
 
-jshell> var b = new StringWriter();
+jshell> var b = new StringWriter()
 b ==>
 
 jshell> a.transferTo(b)
@@ -737,15 +737,19 @@ b ==> hello world
 
 === `RuntimeMXBean.getPid()`
 
-This new method returns the process ID representing the running JVM:
-
 [source,java]
 ----
-jshell> import java.lang.management.*;
+jshell> import java.lang.management.*
+
+jshell> ProcessHandle.current()
+$1 ==> 20674 <2>
 
 jshell> ManagementFactory.getRuntimeMXBean().getPid()
-$8 ==> 11429
+$2 ==> 11429 <1>
+
 ----
+<1> current PID is exported also via JMX
+
 
 == Upgrade to Java 9
 
