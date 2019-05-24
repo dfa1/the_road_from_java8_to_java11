@@ -10,9 +10,9 @@
 
 ## Downloads
 
-* [PDF](https://dfa.bitbucket.io/the_road_from_java8_to_java11.pdf)
-* [HTML](https://dfa.bitbucket.io/the_road_from_java8_to_java11.html)
-* [latest](https://dev.azure.com/davideangelocola/the%20road%20from%20java%208%20to%20java%2011/_build?definitionId=2&_a=summary)
+* [PDF, last release](https://dfa.bitbucket.io/the_road_from_java8_to_java11.pdf)
+* [HTML, last release](https://dfa.bitbucket.io/the_road_from_java8_to_java11.html)
+* [PDF, last commit](https://dev.azure.com/davideangelocola/the%20road%20from%20java%208%20to%20java%2011/_build?definitionId=2&_a=summary)
 
 ## Build
 
