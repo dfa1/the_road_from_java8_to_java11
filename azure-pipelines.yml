@@ -14,7 +14,7 @@ steps:
 
 - script: |
     bundler --binstubs
-    ./bin/rake pdf
+    ./bin/rake check pdf
 
 - task: PublishPipelineArtifact@0
   inputs:
