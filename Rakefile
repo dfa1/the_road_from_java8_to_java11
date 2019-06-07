@@ -19,6 +19,14 @@ task :pdf do
   end
 end
 
-task all: [:pdf, :html]
+task :check do
+  begin
+    system "bundle exec awesome_bot --white-list 'http://0.0.0.0:80,http://localhost' --allow-redirect --skip-save-results main.adoc" or raise
+  end
+end
+
+task build: [:pdf, :html]
+
+task all: [:check, :build]
 
 task :default => :all

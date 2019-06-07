@@ -17,11 +17,14 @@ GEM
       safe_yaml (~> 1.0.0)
       thread_safe (~> 0.3.0)
       treetop (~> 1.5.0)
+    awesome_bot (1.18.0)
+      parallel (= 1.12.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     css_parser (1.7.0)
       addressable
     hashery (2.1.2)
+    parallel (1.12.0)
     pdf-core (0.7.0)
     pdf-reader (2.2.0)
       Ascii85 (~> 1.0.0)
@@ -58,6 +61,7 @@ PLATFORMS
 DEPENDENCIES
   asciidoctor (= 2.0.9)!
   asciidoctor-pdf!
+  awesome_bot!
   coderay!
   rake!
 

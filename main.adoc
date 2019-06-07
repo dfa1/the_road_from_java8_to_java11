@@ -16,7 +16,7 @@ minimalistic style:
 
 * focus is on the language level changes, secondarily on deploy/production features
 * use standard *Java Class Library* as much as possible
-* use *JShell* as much as possible, https://www.infoq.com/articles/jshell-java-repl[a well written introduction to JShell]
+* use *JShell* as much as possible, https://www.infoq.com/articles/jshell-java-repl/[a well written introduction to JShell]
 * provide links to release notes, JEPs and bug reports
 
 === Author
@@ -36,7 +36,7 @@ This document is licensed under a https://creativecommons.org/licenses/by-sa/4.0
 
 == Upgrade to Java 11
 
-https://jdk.java.net/11/release-notes
+https://openjdk.java.net/projects/jdk/11/
 
 Java 11 is the new LTS (Long Term Support), so it is über-important to upgrade as soon as
 possible to this version.
@@ -54,7 +54,7 @@ These are the main features of Java 11:
 
 === Which JDK?
 
-Since https://blog.joda.org/2018/09/do-not-fall-into-oracles-java-11-trap.htmlOracle[JDK11 is a commercial
+Since https://blog.joda.org/2018/09/do-not-fall-into-oracles-java-11-trap.html[JDK11 is a commercial
 product], to use it in production you have to pay Oracle, details here: https://www.oracle.com/technetwork/java/javaseproducts/overview/javasesubscriptionfaq-4891443.html.
 
 However, there are free, zero-cost, alternatives:
