@@ -458,7 +458,7 @@ $2 ==> 0
 
 === Null objects for Reader/Writer and InputStream/OutputStream
 
-https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader()
+https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Reader.html#nullReader%28%29
 
 * `Reader.nullReader()`
 * `Writer.nullWriter()`
