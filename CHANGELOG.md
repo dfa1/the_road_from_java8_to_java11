@@ -5,7 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.9.1] - 2019-06-09
 - Java 9: minor cleanups
+- fix broken links
 
 ## [0.9.0] - 2019-05-19
 - migrated to asciidoctor 2.0
