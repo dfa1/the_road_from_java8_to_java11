@@ -5,7 +5,7 @@
 ## What is this repository for?
 
 * What's new in Java 8, 9, 10, 11
-* Some migration notes and guidance
+* Migration notes
 * Examples using [JShell](https://openjdk.java.net/jeps/222)
 
 ## Downloads
