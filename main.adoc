@@ -4,7 +4,7 @@ Davide Angelocola <davide.angelocola@gmail.com>
 :copyright: CC-BY-SA 4.0
 :doctype: book
 :creator: {author}
-:homepage: https://dfa.bitbucket.io
+:homepage: https://dfa1.github.io
 :source-highlighter: coderay
 
 == Introduction
