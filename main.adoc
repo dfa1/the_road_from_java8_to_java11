@@ -1112,7 +1112,7 @@ The main features of Java 8 are:
 - Project Lambda (lambda and streams) https://openjdk.java.net/projects/lambda/
 - ThreeTen (new date/time library) https://openjdk.java.net/projects/threeten/
 
-Nevertheless there are hidden gems in this release, that often are ignored.
+Nevertheless there are hidden gems in this release that often are ignored.
 
 === `java.io.UncheckedIOException`
 
