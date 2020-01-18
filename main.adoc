@@ -116,7 +116,6 @@ Historically to run a Java program we had to:
 
 [source]
 ----
-dfa@aman:~ $ vim Hello.java
 dfa@aman:~ $ cat Hello.java <1>
 public class Hello { <1>
 	public static void main(String[] args) {
@@ -134,7 +133,6 @@ Now it is possible to edit and run a single-file Java program with much less cer
 
 [source]
 ----
-dfa@aman:~ $ vim demo.java
 dfa@aman:~ $ cat demo.java <1>
 public class Hello { <1>
 	public static void main(String[] args) {
@@ -628,8 +626,8 @@ INFO: Created user preferences directory.
 jshell> Runtime.getRuntime().availableProcessors()
 $1 ==> 4 <2>
 ----
-<1> 1 CPU requested
-<2> 4 CPU available
+<1> *1* CPU requested
+<2> *4* CPUs available
 
 Before this release JVM was not aware of this `--cpus 1`, so this is why JVM sees 4 CPUs.
 Whereas in Java 10:
@@ -644,8 +642,8 @@ INFO: Created user preferences directory.
 jshell> Runtime.getRuntime().availableProcessors()
 $1 ==> 1 <2>
 ----
-<1> 1 CPU requested
-<2> 1 CPU available
+<1> *1* CPU requested
+<2> *1* CPU available
 
 It is possible to use also a cpu-set:
 
@@ -660,7 +658,7 @@ jshell> Runtime.getRuntime().availableProcessors()
 $1 ==> 2
 ----
 
-Regarding memory setting, by default JVM uses 1/4 of the memory, 2 GB in the following example:
+Regarding memory setting, by default JVM uses 1/4 of the memory, 2GB in the following example:
 
 ----
 dfa@aman:~ $ docker container run -it --rm openjdk:10-jdk-slim
@@ -694,7 +692,7 @@ A very nice explanation about Docker and JVM memory settings can be found here h
 
 
 ==== References
-More on this can be found in the following tickets:
+More on this topic can be found in the following tickets:
 
 - improve docker container detection and resource configuration usage https://bugs.openjdk.java.net/browse/JDK-8146115
 - allow more flexibility in selecting Heap % of available RAM https://bugs.openjdk.java.net/browse/JDK-8186248
@@ -705,8 +703,8 @@ More on this can be found in the following tickets:
 
 https://bugs.openjdk.java.net/browse/JDK-8173425
 
-In order to be precise and avoid ambiguities around the special handling of the first sentence of javadoc,
-it is possible to use `@summary`:
+In order to be precise and avoid ambiguities around the special handling of the first
+sentence of javadoc, it is possible to use `@summary`:
 
 [source,java]
 ----
@@ -742,13 +740,14 @@ b ==> hello world
 jshell> import java.lang.management.*
 
 jshell> ProcessHandle.current()
-$1 ==> 20674 <2>
+$1 ==> 20674 <1>
 
 jshell> ManagementFactory.getRuntimeMXBean().getPid()
-$2 ==> 11429 <1>
+$2 ==> 11429 <2>
 
 ----
-<1> current PID is exported also via JMX
+<1> current JVM PID
+<2> and exported via JMX
 
 
 == Upgrade to Java 9
@@ -1112,7 +1111,7 @@ The main features of Java 8 are:
 - Project Lambda (lambda and streams) https://openjdk.java.net/projects/lambda/
 - ThreeTen (new date/time library) https://openjdk.java.net/projects/threeten/
 
-Nevertheless there are hidden gems in this release that often are ignored.
+Nevertheless there are few hidden gems that often are ignored.
 
 === `java.io.UncheckedIOException`
 
