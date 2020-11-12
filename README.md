@@ -1,6 +1,6 @@
 # The Road From Java 8 to Java 11
 
-[![License](https://img.shields.io/badge/License-CC_BY_SA-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/) [![Build Status](https://dev.azure.com/davideangelocola/the%20road%20from%20java%208%20to%20java%2011/_apis/build/status/dfa1.the_road_from_java8_to_java11?branchName=master)](https://dev.azure.com/davideangelocola/the%20road%20from%20java%208%20to%20java%2011/_build/latest?definitionId=2&branchName=master)
+[![License](https://img.shields.io/badge/License-CC_BY_SA-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## What is this repository for?
 
@@ -12,7 +12,6 @@
 
 * [PDF, last release](https://dfa1.github.io/the_road_from_java8_to_java11.pdf)
 * [HTML, last release](https://dfa1.github.io/the_road_from_java8_to_java11.html)
-* [PDF, last commit](https://dev.azure.com/davideangelocola/the%20road%20from%20java%208%20to%20java%2011/_build?definitionId=2&_a=summary)
 
 ## Build
 
