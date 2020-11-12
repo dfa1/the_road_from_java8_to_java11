@@ -377,7 +377,7 @@ jshell> fullSpace.repeat(10).isBlank()
 $2 ==> true
 ----
 
-Be aware that there are surprising results around the definition of https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Character.html#isWhitespace(int)[`Character.isWhitespace`], such as
+Be aware that there are surprising results around the definition of (https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Character.html#isWhitespace%28int%29[`Character.isWhitespace`], such as
 non-breaking spaces or newlines:
 
 [source,java]
