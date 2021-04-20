@@ -1,11 +1,14 @@
 GEM
+  specs:
+
+GEM
   remote: https://rubygems.org/
   specs:
     Ascii85 (1.0.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     afm (0.2.2)
-    asciidoctor (2.0.11)
+    asciidoctor (2.0.14)
     asciidoctor-pdf (1.5.3)
       asciidoctor (>= 1.5.3, < 3.0.0)
       concurrent-ruby (~> 1.1.0)
@@ -60,7 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  asciidoctor (= 2.0.11)!
+  asciidoctor (= 2.0.14)!
   asciidoctor-pdf!
   awesome_bot!
   coderay!
