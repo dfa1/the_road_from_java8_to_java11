@@ -1,4 +1,7 @@
 GEM
+  specs:
+
+GEM
   remote: https://rubygems.org/
   specs:
     Ascii85 (1.0.3)
@@ -48,7 +51,7 @@ GEM
       pdf-reader (~> 2.0)
       prawn (~> 2.2)
     public_suffix (4.0.3)
-    rake (13.0.1)
+    rake (13.0.4)
     ruby-rc4 (0.1.5)
     safe_yaml (1.0.5)
     thread_safe (0.3.6)
