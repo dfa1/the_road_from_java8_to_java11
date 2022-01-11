@@ -21,7 +21,7 @@ end
 
 task :check do
   begin
-    system "bundle exec awesome_bot --white-list 'http://0.0.0.0:80,http://localhost' --allow-redirect --skip-save-results main.adoc" or raise
+    system "bundle exec awesome_bot --white-list 'http://0.0.0.0:80,http://localhost,https://www.oracle.com' --allow-redirect --skip-save-results main.adoc" or raise
   end
 end
 
