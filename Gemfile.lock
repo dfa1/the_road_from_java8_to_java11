@@ -1,7 +1,4 @@
 GEM
-  specs:
-
-GEM
   remote: https://rubygems.org/
   specs:
     Ascii85 (1.1.0)
@@ -62,11 +59,11 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
-  asciidoctor (= 2.0.11)!
-  asciidoctor-pdf!
-  awesome_bot!
-  coderay!
-  rake!
+  asciidoctor (= 2.0.11)
+  asciidoctor-pdf
+  awesome_bot
+  coderay
+  rake
 
 BUNDLED WITH
    2.3.4
