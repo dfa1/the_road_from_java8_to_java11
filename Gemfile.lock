@@ -19,7 +19,7 @@ GEM
     awesome_bot (1.20.0)
       parallel (= 1.20.1)
     coderay (1.1.3)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.3.7)
     css_parser (1.11.0)
       addressable
     hashery (2.1.2)
